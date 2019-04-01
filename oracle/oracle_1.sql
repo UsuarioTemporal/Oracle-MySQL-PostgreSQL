@@ -5,4 +5,3 @@ select table_name from user_tables;
 select table_name from all_tables owner = 'juan';
 
 select * from tab;
-alternativoABC123
