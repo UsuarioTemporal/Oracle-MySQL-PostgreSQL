@@ -18,6 +18,11 @@ select employee_id,last_name,salary from employees where departamento_id=80;
 desc empleadoview;
 select * from empleadoview;
 
+
+create or replace view dept_sum_vu(name,minsalario,maxsalario,avgsalario) -- esto de aqui es el alias
+as select d.department_name ,min(e.salary),max(e.salary),avg(e.salary) 
+from employees as e join departments as d
+on e.department_id = d.department_id group by d.department_name
 -- secuencias 
 
 --indices 
