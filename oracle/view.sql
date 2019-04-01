@@ -23,6 +23,26 @@ create or replace view dept_sum_vu(name,minsalario,maxsalario,avgsalario) -- est
 as select d.department_name ,min(e.salary),max(e.salary),avg(e.salary) 
 from employees as e join departments as d
 on e.department_id = d.department_id group by d.department_name
+
+
+-- la clausula WITH CHECK OPTION
+/*
+puede asegurarse que una operacion DML sobre la vista este en dominio de la misma vista, usando esta clausula
+*/
+create or replace view empvu20
+as select *
+    from employees
+    where department_id=20
+    with check option constraint empvu20_ck;
+/*
+Cualquier intento de INSERT o UPDATE de fila con un departament_id diferente de 20, flla por que villa el constraint
+*/
+
+-- la clausula WITH READ ONLY
+
+/*
+    se puede asegurar que ninguna operacion DML ocurra agregando la opcion WITH READ ONLY en la definicion de la vista.
+*/
 -- secuencias 
 
 --indices 
