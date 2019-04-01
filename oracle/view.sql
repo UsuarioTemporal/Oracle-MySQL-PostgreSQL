@@ -43,8 +43,28 @@ Cualquier intento de INSERT o UPDATE de fila con un departament_id diferente de 
 /*
     se puede asegurar que ninguna operacion DML ocurra agregando la opcion WITH READ ONLY en la definicion de la vista.
 */
--- secuencias 
 
---indices 
+--índices
+
+/*
+    - es un objeto de esquema
+    - es usado por el oracle server para acelerar la busqueda de los datos usando un  apuntador
+    - Para reducir las entradas y salidas (I/O) usando un método para localizar datos rápidamente
+    - es dependiente sobre la tabla que fue creado el índice
+
+Cuando se crean los índices
+
+- Automaticamente : clave primaria o una restriccion única
+- manualmente : Definidos por el usuario
+*/
+
+
 
 -- sinonimos
+
+/*
+simplificar el acceso a los objetos creando sinonimos
+*/
+create [public] synonym nombreSinonimo for object; -- public : todos los usuarios tienen acceso a ese sinonimo
+create synonym d_sum for dep_sum_vu;
+select * from d_sum;
