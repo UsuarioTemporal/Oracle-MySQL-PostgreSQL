@@ -1,4 +1,4 @@
-# bloques anidados
+-- bloques anidados
 declare
     x number := 10;
 begin
@@ -20,7 +20,7 @@ begin
     null;
 end;
 
-# variables
+-- variables
 declare
     salario number(2):=100;
     nombre varchar2(100):='Pedro Rodrigues';
@@ -72,4 +72,30 @@ begin
         else
             DBMS_OUTPUT.PUT_LINE('otro');
     end case;
+end;
+
+
+declare
+    contador number:=1;
+begin
+    loop
+        DBMS_OUTPUT.put_line(contador);
+        contador:=contador+1;
+        exit when contador=10;
+    end loop;
+end;
+
+declare
+    contador number:=1;
+begin
+    while contador <=10 loop
+        DBMS_OUTPUT.put_line(contador);
+        contador:=contador+1;
+    end loop;
+end;
+
+begin 
+    for contador in 1..10 loop
+    -- for contador in reverse 1..10 loop
+    end loop;
 end;
