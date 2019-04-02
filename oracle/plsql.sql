@@ -19,3 +19,15 @@ end;
 begin
     null;
 end;
+
+# variables
+declare
+    salario number(2):=100;
+    nombre varchar2(100):='Pedro Rodrigues';
+    fecha_nacimiento date:='16-jun-1989';
+begin
+    salario:=salario*10
+    if salario>1000 then
+
+    end if;
+end;
