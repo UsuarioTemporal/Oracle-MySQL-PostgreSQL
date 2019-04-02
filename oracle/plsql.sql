@@ -142,11 +142,3 @@ VARCHAR2 no distingue entre a NULL y cadena vacía, y nunca lo hará.Es decir qu
 
 Si confías en una cadena vacía y NULL eres la misma cosa, debes usar VARCHAR2.
 
-*/
-
-/*
-
-    Diferencias entre date y timestamp(marca de tiempo)
-
-    Diferencia
-*/
