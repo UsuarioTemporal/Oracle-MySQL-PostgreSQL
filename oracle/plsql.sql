@@ -99,3 +99,22 @@ begin
     -- for contador in reverse 1..10 loop
     end loop;
 end;
+
+
+declare
+    contador number :=0;
+begin
+    <<loop_inicial>>
+    loop
+        contador:=contador+1;
+        DBMS_OUTPUT.put_line(contador || ' inicial');
+        exit when contador>10;
+        <<loop_anidado>>
+        loop 
+            contador:=contador+1;
+            DBMS_OUTPUT.put_line(contador || ' anidado');
+            exit loop_inicial when contador=5;
+        end loop loop_anidado;
+        
+    end loop loop_inicial;
+end;
