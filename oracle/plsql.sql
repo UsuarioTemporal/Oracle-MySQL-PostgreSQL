@@ -124,9 +124,9 @@ declare
     pasos number:=1;
 begin
     loop
-    exit when pasos=5;
-    DBMS_OUTPUT.put_line(pasos || ' : ' || contador);
-    contador:=contador+1;
+        exit when pasos=5;
+        DBMS_OUTPUT.put_line(pasos || ' : ' || contador);
+        contador:=contador+1;
         if contador=4 then
             contador:=1;
             pasos:=pasos+1;
@@ -134,3 +134,19 @@ begin
         end if;
     end loop;
 end;
+
+/*
+    VARCHAR está reservado Oracle para admitir la distinción entre NULL cadena vacía en el futuro, como ANSI prescribe el estándar.
+
+VARCHAR2 no distingue entre a NULL y cadena vacía, y nunca lo hará.Es decir que si ingresas una cadena vacia o si no ingresas nada al usar varchar2 lo tomara igual
+
+Si confías en una cadena vacía y NULL eres la misma cosa, debes usar VARCHAR2.
+
+*/
+
+/*
+
+    Diferencias entre date y timestamp(marca de tiempo)
+
+    Diferencia
+*/
