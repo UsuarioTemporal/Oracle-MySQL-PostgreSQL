@@ -28,6 +28,21 @@ declare
 begin
     salario:=salario*10
     if salario>1000 then
-
+        bla bla bla bla :v
     end if;
 end;
+
+DECLARE 
+    nombre varchar2(100);
+BEGIN
+    select first_name into nombre from employees where employee_id=100;
+    DBMS_OUTPUT.put_line(nombre);
+END; 
+
+DECLARE 
+    nombre varchar2(100);
+    apellido varchar2(100);
+BEGIN
+    select first_name,last_name into nombre,apellido from employees where employee_id=100;
+    DBMS_OUTPUT.put_line(nombre || ' '||apellido);
+END; 
