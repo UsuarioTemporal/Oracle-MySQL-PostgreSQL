@@ -118,3 +118,19 @@ begin
         
     end loop loop_inicial;
 end;
+
+declare 
+    contador number:=1;
+    pasos number:=1;
+begin
+    loop
+    exit when pasos=5;
+    DBMS_OUTPUT.put_line(pasos || ' : ' || contador);
+    contador:=contador+1;
+        if contador=4 then
+            contador:=1;
+            pasos:=pasos+1;
+            continue;
+        end if;
+    end loop;
+end;
