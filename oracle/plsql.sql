@@ -45,4 +45,31 @@ DECLARE
 BEGIN
     select first_name,last_name into nombre,apellido from employees where employee_id=100;
     DBMS_OUTPUT.put_line(nombre || ' '||apellido);
+    DBMS_OUTPUT.put_line(UPPER(nombre || ' '||apellido));
 END; 
+
+declare
+    x number:=2;
+begin
+    if x=1 then
+        DBMS_OUTPUT.PUT_LINE('Es uno');
+    elsif x=2 then
+        DBMS_OUTPUT.PUT_LINE('Es dos');
+    else 
+        DBMS_OUTPUT.PUT_LINE('otro');
+    end if;
+end;
+
+
+declare
+    x number:=2;
+begin
+    case x
+        when 100 then
+            DBMS_OUTPUT.PUT_LINE('100');
+        when 2 then
+            DBMS_OUTPUT.PUT_LINE('2');
+        else
+            DBMS_OUTPUT.PUT_LINE('otro');
+    end case;
+end;

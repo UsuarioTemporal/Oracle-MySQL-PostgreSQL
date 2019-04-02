@@ -129,4 +129,4 @@ FROM tabla
 nullif("","") -- recibe dos parametros , si son iguales retorna un null y si no retorna el primer valor 
 
 select decode(job_id,'1',1.2.
-                    '2',1.54);
+                    '2',1.54) as Resultado from tabla;
