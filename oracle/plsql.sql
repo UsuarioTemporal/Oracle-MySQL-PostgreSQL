@@ -141,4 +141,23 @@ end;
 VARCHAR2 no distingue entre a NULL y cadena vacía, y nunca lo hará.Es decir que si ingresas una cadena vacia o si no ingresas nada al usar varchar2 lo tomara igual
 
 Si confías en una cadena vacía y NULL eres la misma cosa, debes usar VARCHAR2.
+*/
+
+/*clausula %type */
+declare
+    nom VARCHAR2(50);
+    nom_2 departments.department_name%type;
+begin
+    SELECT nombre into nom FROM employees WHERE employee_id=100;
+    DBMS_OUTPUT.PUT_LINE(nom);
+end;
+
+/*clausula %rowtype */
+declare
+    departamento departments%rowtype;
+begin
+    SELECT * into departamento  FROM employees WHERE employee_id=100;
+    DBMS_OUTPUT.PUT_LINE(departamento);
+    DBMS_OUTPUT.PUT_LINE(departamento.department_name);
+end;
 
