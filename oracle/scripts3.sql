@@ -161,3 +161,12 @@ begin
     DBMS_OUTPUT.PUT_LINE(departamento.department_name);
 end;
 
+-- transacciones
+
+begin 
+    update tabla set column1='asdasd' where cod=1;
+    savepoint primero;
+    update tabla set column1='123123' where cod=1;
+    savepoint segundo;
+    rollback  to primero;
+end;
