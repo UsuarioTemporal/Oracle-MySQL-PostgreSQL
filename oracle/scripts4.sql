@@ -101,7 +101,7 @@ DECLARE
     CURSOR nombre_cursor(cod_dep NUMBER) IS SELECT * FROM employees WHERE department_id=cod_dep;
     empleados nombre_cursor%ROWTYPE;
 BEGIN
-    OPEN nombre_cursor(30);
+    OPEN nombre_cursor(30); -- (&cod)
     LOOP
         FECTH nombre_cursor INTO empleados;
         EXIT WHEN nombre_cursor%NOTFOUND;
