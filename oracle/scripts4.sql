@@ -57,3 +57,27 @@ fetch nombre_cursor into empleados;
 DBMS_OUTPUT.PUT_LINE(empleados.first_name)
 close nombre_cursor;
 end;
+
+
+declare
+    cursor nombre_cursor is select * from employees;
+    empleados employees%ROWTYPE;
+begin
+    OPEN nombre_cursor;
+    LOOP
+        FETCH nombre_cursor INTO empleados;
+        EXIT WHEN nombre_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(empleados);
+    END LOOP;
+    CLOSE nombre_cursor;
+end;
+
+DECLARE
+    CURSOR nombre_cursor IS SELECT * FROM employees;
+    -- empleados employees%ROWTYPE;
+BEGIN
+    FOR empleados in nombre_cursor LOOP
+        DBMS_OUTPUT.PUT_LINE(empleados)
+        DBMS_OUTPUT.PUT_LINE(empleados.first_name)
+    END LOOP;
+END;
