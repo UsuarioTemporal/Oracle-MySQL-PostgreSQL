@@ -170,3 +170,15 @@ begin
     savepoint segundo;
     rollback  to primero;
 end;
+
+
+declare
+    _cod_cliente clientes.codigo_cliente%type:=&codigo;
+    _nom_cliente clientes.nombre_cliente%type;
+begin
+    select nombre_cliente into _nom_cliente from clientes
+    where codigo_cliente = _cod_cliente;
+
+    DBMS_OUTPUT.PUT_LINE('El nombre del cliente es '|| _nom_cliente);
+end;
+/
