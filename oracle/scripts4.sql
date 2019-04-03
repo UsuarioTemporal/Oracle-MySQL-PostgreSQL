@@ -81,3 +81,32 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE(empleados.first_name)
     END LOOP;
 END;
+
+
+DECLARE
+    CURSOR nombre_cursor IS SELECT * FROM employees WHERE department_id=30;
+    empleados nombre_cursor%ROWTYPE;
+BEGIN
+    OPEN nombre_cursor;
+    LOOP
+        FECTH nombre_cursor INTO empleados;
+        EXIT WHEN nombre_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(empleados);
+        DBMS_OUTPUT.PUT_LINE(empleados.first_name)
+    END LOOP;
+    CLOSE nombre_cursor;
+END;
+
+DECLARE
+    CURSOR nombre_cursor(cod_dep NUMBER) IS SELECT * FROM employees WHERE department_id=cod_dep;
+    empleados nombre_cursor%ROWTYPE;
+BEGIN
+    OPEN nombre_cursor(30);
+    LOOP
+        FECTH nombre_cursor INTO empleados;
+        EXIT WHEN nombre_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(empleados);
+        DBMS_OUTPUT.PUT_LINE(empleados.first_name)
+    END LOOP;
+    CLOSE nombre_cursor;
+END;
