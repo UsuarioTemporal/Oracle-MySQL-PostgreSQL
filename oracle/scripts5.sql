@@ -89,3 +89,6 @@ exception
         INSERT INTO regions VALUES (region.region_id,region.region_name);
         COMMIT ;
 end;
+
+-- el códidog de error generados por nosotros y que tenemos que definirles y decirles cuales son
+-- van desde -20000 hasta -20999
