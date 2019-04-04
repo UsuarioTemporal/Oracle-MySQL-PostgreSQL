@@ -26,7 +26,7 @@ emple1 empleado;
 
 SET SERVEROUTput ON
 DECLARE
-    TYPE empelado IS RECORD (
+    TYPE empleado IS RECORD (
         nombre VARCHAR2(100),
         salario NUMBER,
         fecha employees.hire_date%TYPE,
@@ -38,7 +38,7 @@ BEGIN
     employees WHERE employee_id=100;
     emple1.nombre:= emple1.datos_completos.first_name || ' '|| emple1.datos_completos.last_name;
     emple1.salario:=emple1.datos_completos.salary*0.08;
-    emple1.fecha:=emple1.datos.hire_date;
+    emple1.fecha:=emple1.datos_completos.hire_date;
     --DBMS_OUTPUT.PUT_LINE(emple1); no se puede imprimir todo este objeto , tiene que ser algunos de sus valores
-    DBMS_OUTPUT.PUT_LINE(emple1.datos.first_name);
+    DBMS_OUTPUT.PUT_LINE(emple1.datos_completos.first_name);
 END;
