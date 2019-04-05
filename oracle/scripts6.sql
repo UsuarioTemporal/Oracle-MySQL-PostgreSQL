@@ -85,3 +85,15 @@ empls empleados;
         Si es de un tipo complejo, por ejemplo empleados, usamos
         array(n).campo
 */
+
+-- tipo  simple
+
+depts(1):='Informatica';
+depts(2):='RRHH';
+DBMS_OUTPUT.PUT_LINE(depts(1));
+DBMS_OUTPUT.PUT_LINE(depts(2));
+
+-- tipo compuesto
+
+select * into empls(1) from employees where employee_id=100;
+DBMS_OUTPUT.PUT_LINE(empls(1).first_name);
