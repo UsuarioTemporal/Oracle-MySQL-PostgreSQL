@@ -142,4 +142,8 @@ BEGIN
         SELECT * INTO depts(indice) FROM departaments WHERE departament_id
         =index*10;
     END LOOP;
+
+    FOR indice IN depts.FIRST..depts.LAST LOOP
+        DBMS_OUTPUT.PUT_LINE(depts(indice));
+    END LOOP;
 END;
