@@ -130,3 +130,16 @@ BEGIN
     depts(1):='Informatica';
     DBMS_OUTPUT.put_line(depts(1));
 END;
+
+
+declare
+    TYPE departaments IS TABLE OF
+        departments%ROWTYPE
+    INDEX BY PLS_INTEGER;
+    depts departamentos;
+BEGIN
+    FOR indice IN 1..10 LOOP
+        SELECT * INTO depts(indice) FROM departaments WHERE departament_id
+        =index*10;
+    END LOOP;
+END;
