@@ -97,3 +97,36 @@ DBMS_OUTPUT.PUT_LINE(depts(2));
 
 select * into empls(1) from employees where employee_id=100;
 DBMS_OUTPUT.PUT_LINE(empls(1).first_name);
+
+/*
+    COLECCIONES Y TIPOS COMPUESTOS
+        MÉTODOS DE LOS ARRAYS
+            EXISTS(N) : DETECTAR SI EXISTE UN ELEMENTO
+            COUNT : NÚMERO DE ELEMENTOS
+            FIRST : DEVUELVE EL ÍNDICE MAS PEQUEÑO
+            LAST : DEVULEVE EL ÍNDICE MAS ALTO
+            PRIOR(N) : DEVUELVE EL ÍNDICE ANTERIOR A N
+            NEXT(N) : DEVUELVE EL ÍNDICE POSTERIOR A N
+            DELETE : BORRA TODO
+            DELETE(N) : BORRAR EL ÍNDICE N
+            DELETE(M,N) : BORRA DE LOS ÍNIDICES M A N
+*/
+
+DBMS_OUTPUT.PUT_LINE(depts.LAST);
+DBMS_OUTPUT.PUT_LINE(depts.FIRST);
+IF depts.EXISTS(2) THEN
+    DBMS_OUTPUT.PUT_LINE(depts(3));
+ELSE
+    DBMS_OUTPUT.PUT_LINE('VALOR INEXISTENTE');
+END IF;
+
+
+DECLARE
+    TYPE departamentos IS TABLE OF
+        departments.department_name%TYPE
+    INDEX BY PLS_INTEGER;
+    depts departamentos;
+BEGIN
+    depts(1):='Informatica';
+    DBMS_OUTPUT.put_line(depts(1));
+END;
