@@ -60,3 +60,28 @@ BEGIN
     reg1.region_name := 'Australia';
     UPDATE regiones set row=reg1 where region_id=1;
 end;
+/
+
+-- Collections y tipos compuestos
+    -- arrays asociativos(index by tables) no tienen tamaño
+        -- son colecciones pl/sql con dos columnas
+        -- clave primaria de tipo entero o cadena
+        -- valores  : un tipo que puede ser escalar , o record
+
+TYPE departamentos IS TABLE OF 
+    departaments.departament_name%TYPE
+INDEX BY PLS_INTEGER; -- binary_integer | varchar2(x)
+
+TYPE empleados IS TABLE OF
+    employees%ROWTYPE -- complejo
+INDEX BY PLS_INTEGER;
+
+depts departamentos;
+empls empleados;
+
+/*
+    Acceso al array
+        Para acceder al array usamos ARRAY(n)
+        Si es de un tipo complejo, por ejemplo empleados, usamos
+        array(n).campo
+*/
