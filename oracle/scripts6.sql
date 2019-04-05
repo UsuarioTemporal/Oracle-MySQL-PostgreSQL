@@ -42,3 +42,21 @@ BEGIN
     --DBMS_OUTPUT.PUT_LINE(emple1); no se puede imprimir todo este objeto , tiene que ser algunos de sus valores
     DBMS_OUTPUT.PUT_LINE(emple1.datos_completos.first_name);
 END;
+
+
+create table  regiones as select * from regions where region_id=0;
+declare
+    reg1 regions%ROWTYPE;
+BEGIN
+    SELECT * INTO reg1 FROM regions WHERE region_id=1;
+    INSERT INTO regiones values (reg1);
+END;
+/
+
+declare
+    reg1 regions%ROWTYPE;
+BEGIN
+    reg1.region_id:=1;
+    reg1.region_name := 'Australia';
+    UPDATE regiones set row=reg1 where region_id=1;
+end;
