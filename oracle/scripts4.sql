@@ -178,11 +178,11 @@ DECLARE
     tb_tempo_paises cur_paises%ROWTYPE;
 BEGIN
     OPEN cur_paises;
-    FETCH cur_paises INTO tb_tempo_paises;
+    FETCH cur_paises INTO tb_tempo_paises; -- aquí se habre el cursor por primera vez
     WHILE cur_paises%FOUND LOOP
         UPDATE countries SET country_name=tb_tempo_paises.country_name || '...' 
         WHERE CURRENT OF cur_paises;
-        FETCH cur_paises INTO tb_tempo_paises;
+        FETCH cur_paises INTO tb_tempo_paises; -- aquí se comienza la segundo y asi toda la iteración
     END LOOP;
     CLOSE cur_paises;
 END;
