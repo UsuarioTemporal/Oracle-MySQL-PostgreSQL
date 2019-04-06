@@ -154,23 +154,6 @@ UPDATE tbla SET campo1=... WHERE CURRENT OF nombre_cursor;
 -- Actualizar el nombre de los paises con tres puntos seguidos 
 ---------------------------------------------------------------
 
-DECLARE
-    CURSOR cur_paises IS 
-        SELECT cod_pais , nombre_pais , cod_continente FROM pais 
-    FOR UPDATE;
-
-    tb_paises cur_paises%ROWTYPE;
-BEGIN
-    OPEN cur_paises;
-    FETCH cur_paises INTO tb_paises;
-        WHILE cur_paises%FOUND LOOP
-            UPDATE pais SET nom_
-        END LOOP;
-    CLOSE cur_paises;
-    COMMIT;
-END;
-
-
 DECLARE 
     CURSOR cur_paises IS
         SELECT * FROM countries 
@@ -186,3 +169,8 @@ BEGIN
     END LOOP;
     CLOSE cur_paises;
 END;
+
+------------------------------------------------------------------------------------
+--   Subir el salario a todos los empleados del departamento indicado 
+--   en la llamada. El porcentaje se indicará también en la llamada.
+-------------------------------------------------------------------------
