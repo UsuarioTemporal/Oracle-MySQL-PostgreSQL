@@ -145,3 +145,44 @@ CURSOR nombre_cursor IS
 FOR UPDATE;
 
 UPDATE tbla SET campo1=... WHERE CURRENT OF nombre_cursor;
+
+/* 
+    IMPORTANTE : Cuando trabajamos con cursores de actualización debemos tener en cuenta que la sentencia UPDATE genera bloqueos en la base de datos(transacciones,disparadores)
+*/
+
+---------------------------------------------------------------
+-- Actualizar el nombre de los paises con tres puntos seguidos 
+---------------------------------------------------------------
+
+DECLARE
+    CURSOR cur_paises IS 
+        SELECT cod_pais , nombre_pais , cod_continente FROM pais 
+    FOR UPDATE;
+
+    tb_paises cur_paises%ROWTYPE;
+BEGIN
+    OPEN cur_paises;
+    FETCH cur_paises INTO tb_paises;
+        WHILE cur_paises%FOUND LOOP
+            UPDATE pais SET nom_
+        END LOOP;
+    CLOSE cur_paises;
+    COMMIT;
+END;
+
+
+DECLARE 
+    CURSOR cur_paises IS
+        SELECT * FROM countries 
+    FOR UPDATE;
+    tb_tempo_paises cur_paises%ROWTYPE;
+BEGIN
+    OPEN cur_paises;
+    FETCH cur_paises INTO tb_tempo_paises;
+    WHILE cur_paises%FOUND LOOP
+        UPDATE countries SET country_name=tb_tempo_paises.country_name || '...' 
+        WHERE CURRENT OF cur_paises;
+        FETCH cur_paises INTO tb_tempo_paises;
+    END LOOP;
+    CLOSE cur_paises;
+END;
