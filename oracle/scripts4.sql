@@ -178,6 +178,17 @@ END;
 CREATE OR REPLACE PROCEDURE subir_salario_empleados
                 (empl_de_id employees.department_id%type,porcentaje NUMBER)
 IS
+    CURSOR cur_empl IS 
+        SELECT salary FROM employees 
+    FOR UPDATE;
+    tb_temp_empl cur_empl%ROWTYPE;
 BEGIN
-NULL;
+    OPEN cur_empl;
+    FETCH cur_empl INTO tb_temp_empl;
+    WHILE cur_empl%FOUND LOOP
+        UPDATE employees SET salary= tb_temp_empl.salary*porcentaje/100 
+        WHERE CURRENT OF cur_empl;
+        FETCH cur_empl INTO tb_temp_empl;
+    END LOOP;
+    CLOSE cur_empl;
 END;
