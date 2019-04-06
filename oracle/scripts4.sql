@@ -134,3 +134,14 @@ BEGIN
     VALUES (‘LCD’,’Pantalla LCD’);
   END IF;
 END;
+
+
+/*
+    Cursores de actualizacion :
+    Los cursores de actualizacion son muy importante para realizar validaciones rápidas y toma de desiciones en una misma sentencia
+*/
+CURSOR nombre_cursor IS
+    instruccion_SELECT
+FOR UPDATE;
+
+UPDATE tbla SET campo1=... WHERE CURRENT OF nombre_cursor;
