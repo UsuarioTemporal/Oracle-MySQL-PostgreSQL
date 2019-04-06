@@ -174,3 +174,10 @@ END;
 --   Subir el salario a todos los empleados del departamento indicado 
 --   en la llamada. El porcentaje se indicará también en la llamada.
 -------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE subir_salario_empleados
+                (empl_de_id employees.department_id%type,porcentaje NUMBER)
+IS
+BEGIN
+NULL;
+END;
