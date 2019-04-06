@@ -179,7 +179,7 @@ CREATE OR REPLACE PROCEDURE subir_salario_empleados
                 (empl_de_id employees.department_id%type,porcentaje NUMBER)
 IS
     CURSOR cur_empl IS 
-        SELECT salary FROM employees 
+        SELECT salary FROM employees where department_id=empl_de_id
     FOR UPDATE;
     tb_temp_empl cur_empl%ROWTYPE;
 BEGIN
@@ -192,3 +192,4 @@ BEGIN
     END LOOP;
     CLOSE cur_empl;
 END;
+execute subir_salario_empleados(60,5);
