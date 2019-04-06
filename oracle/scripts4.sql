@@ -110,3 +110,27 @@ BEGIN
     END LOOP;
     CLOSE nombre_cursor;
 END;
+
+SET SERVEROUTPUT ON;
+declare
+  vdescripcion VARCHAR2(50);
+begin
+  SELECT DESCRIPCION INTO vdescripcion from PAISES WHERE CO_PAIS = 'ESP';
+  dbms_output.put_line('La lectura del cursor es: ' || vdescripcion);
+end;
+
+DECLARE
+  r ARTICULOS%ROWTYPE;
+BEGIN
+  FOR r IN ( SELECT * FROM ARTICULOS ) LOOP
+    DBMS_OUTPUT.PUT_LINE(r.cArtDsc);
+  END LOOP;
+END;
+
+BEGIN
+  UPDATE ARTICULOS SET cArtDsc = 'Pantalla LCD' WHERE cCodArt = 'LCD';
+  IF SQL%NOTFOUND THEN -- Otra opción : SQL%ROWCOUNT = 0
+    INSERT INTO ARTICULOS (cCodArt,cDesArt)
+    VALUES (‘LCD’,’Pantalla LCD’);
+  END IF;
+END;

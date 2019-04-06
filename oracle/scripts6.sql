@@ -196,3 +196,7 @@ BEGIN
   
 END;
 /
+
+/*
+    Un cursor es el nombre para un área de memoria privada que contiene información procedente de la ejecución de una sentencia SELECt
+*/
