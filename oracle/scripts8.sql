@@ -24,4 +24,20 @@ BEGIN
     FOR i IN 1..total LOOP
         DBMS_OUTPUT.PUT_LINE('STUDENT '|| estudiantes(i)|| ' nota : '|| calificaciones(i));
     END LOOP;
+END; 
+--http://www.rebellionrider.com/collection-method-extend-procedure-in-oracle-database/#.WZ0cPygjG72
+DECLARE
+    CURSOR cur_clientes IS SELECT name FROM clientes;
+    TYPE c_list IS VARRAY(6) OF clientes.nombre%TYPE;
+    lista_nombres c_list:=c_list();
+    contador INTEGER:=0;
+BEGIN
+    -- lista_nombre.extends(cur_clientes.COUNT); -- esta es otra manera de hacerlo
+    FOR n IN cur_clientes LOOP
+        contador:=contador +1;
+        
+        lista_nombres.EXTEND; -- ASIGNANDO NULL EN EL ESPACIO DEL MEMORIA DE LA RAM PARA PODER ALMACENAR UN VALOR
+        lista_nombres(contador):=n.nombre;
+        DBMS_OUTPUT.PUT_LINE('CLIENTES('||contador||') : '||lista_nombre(contador));
+    END LOOP;
 END;
