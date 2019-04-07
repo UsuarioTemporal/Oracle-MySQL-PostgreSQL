@@ -1,6 +1,6 @@
 -- 1-Hacer un programa que tenga un cursor que vaya visualizando los salarios de los empleados. Si en el cursor aparece el jefe (Steven King) se debe generar un RAISE_APPLICATION_ERROR indicando que el sueldo del jefe no se puede ver.
 DECLARE
-    CURSOR cur_jefe IS SELECT (first_name || ' '||last_name) AS nombre,salary 
+    CURSOR cur_jefe IS SELECT (first_name || ' '|| last_name) AS nombre,salary 
     FROM employees ;
     --tab_temp_emple cur_jefe%ROWTYPE;
     ex_steve EXCEPTION;
