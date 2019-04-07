@@ -43,6 +43,7 @@ END;
 
 -- 3-Crear un cursor con parámetros que pasando el número de departamento visualice el número de empleados de ese departamento
 
+-- no es necesario los cursores
 SELECT COUNT(*) as 'Numero_empleados' FROM employeeS
 WHERE DEPARTMENT_ID=30;
 
@@ -54,6 +55,8 @@ where e.department_id=d.department_id;
 
 
 -- 4-Crear un bucle FOR donde declaramos una subconsulta que nos devuelva el nombre de los empleados que sean ST_CLERCK. Es decir, no declaramos el cursor sino que lo indicamos directamente en el FOR.
+
+
 
 -- 5-Creamos un bloque que tenga un cursor para empleados. Debemos crearlo con FOR UPDATE.
 
