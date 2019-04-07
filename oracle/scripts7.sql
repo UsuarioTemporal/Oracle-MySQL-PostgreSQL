@@ -14,6 +14,14 @@ BEGIN
     END LOOP;
 END;
 -- 2-Hacemos un bloque con dos cursores. (Esto se puede hacer fácilmente con una sola SELECT pero vamos a hacerlo de esta manera para probar parámetros en cursores)
+
+
+-- el primero de empleados
+-- El segundo de departamentos que tenga como parámetro el MANAGER_ID
+-- Por cada fila del primero, abrimos el segundo curso pasando el ID del MANAGER
+-- Debemos pintar el Nombre del departamento y el nombre del MANAGER_ID
+-- Si el empleado no es MANAGER de ningún departamento debemos poner “No es jefe de nada”
+
 DECLARE
     CURSOR cur_empl IS SELECT * FROM employees;
     CURSOR cur_dep(manager_id_cur departments.manager_id%TYPE) IS 
@@ -33,11 +41,6 @@ BEGIN
     END LOOP;
 END;
 
--- el primero de empleados
--- El segundo de departamentos que tenga como parámetro el MANAGER_ID
--- Por cada fila del primero, abrimos el segundo curso pasando el ID del MANAGER
--- Debemos pintar el Nombre del departamento y el nombre del MANAGER_ID
--- Si el empleado no es MANAGER de ningún departamento debemos poner “No es jefe de nada”
 -- 3-Crear un cursor con parámetros que pasando el número de departamento visualice el número de empleados de ese departamento
 
 -- 4-Crear un bucle FOR donde declaramos una subconsulta que nos devuelva el nombre de los empleados que sean ST_CLERCK. Es decir, no declaramos el cursor sino que lo indicamos directamente en el FOR.
