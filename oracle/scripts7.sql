@@ -69,3 +69,18 @@ END;
 -- Si es menor de 800 lo hacemos en un 3%
 -- Debemos modificarlo con la cláusula CURRENT OF
 -- Comprobar que los salarios se han modificado correctamente.
+
+DECLARE
+    CURSOR cur_empl IS 
+        SELECT * FROM employees
+    FOR UPDATE;
+    
+BEGIN
+    FOR empl IN cur_empl LOOP
+        IF empl.salary>8000 THEN
+            UPDATE employees SET salary=102*salary/100 WHERE CURRENT OF cur_empl;
+        ELSIF empl.salary<800 THEN
+            UPDATE employees SET salary=103*salary/100 WHERE CURRENT OF cur_empl;
+        END IF;
+    END LOOP;
+END;
