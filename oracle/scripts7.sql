@@ -1,5 +1,18 @@
 -- 1-Hacer un programa que tenga un cursor que vaya visualizando los salarios de los empleados. Si en el cursor aparece el jefe (Steven King) se debe generar un RAISE_APPLICATION_ERROR indicando que el sueldo del jefe no se puede ver.
-
+DECLARE
+    CURSOR cur_jefe IS SELECT (first_name || ' '||last_name) AS nombre,salary 
+    FROM employees ;
+    --tab_temp_emple cur_jefe%ROWTYPE;
+    ex_steve EXCEPTION;
+BEGIN
+    FOR tab_temp_emple IN cur_jefe LOOP
+        IF TRIM(tab_temp_emple.nombre) LIKE 'Steven King' THEN
+            --RAISE_APPLICATION_ERROR(-20000, tab_temp_emple.nombre|| ' privado' );
+            CONTINUE;
+        END IF;
+        DBMS_OUTPUT.PUT_LINE( tab_temp_emple.nombre||' : '||  tab_temp_emple.salary );
+    END LOOP;
+END;
 -- 2-Hacemos un bloque con dos cursores. (Esto se puede hacer fácilmente con una sola SELECT pero vamos a hacerlo de esta manera para probar parámetros en cursores)
 
 -- el primero de empleados
