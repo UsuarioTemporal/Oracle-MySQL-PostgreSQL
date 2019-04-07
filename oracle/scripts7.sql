@@ -55,6 +55,11 @@ where e.department_id=d.department_id;
 
 
 -- 4-Crear un bucle FOR donde declaramos una subconsulta que nos devuelva el nombre de los empleados que sean ST_CLERCK. Es decir, no declaramos el cursor sino que lo indicamos directamente en el FOR.
+BEGIN
+    FOR empl IN(SELECT * FROM employees WHERE job_id='ST_CLERK') LOOP
+        DBMS_OUTPUT.PUT_LINE(empl.first_name);
+    END LOOP;
+END;
 
 
 
