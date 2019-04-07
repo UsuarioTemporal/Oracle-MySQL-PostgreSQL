@@ -14,6 +14,24 @@ BEGIN
     END LOOP;
 END;
 -- 2-Hacemos un bloque con dos cursores. (Esto se puede hacer fácilmente con una sola SELECT pero vamos a hacerlo de esta manera para probar parámetros en cursores)
+DECLARE
+    CURSOR cur_empl IS SELECT * FROM employees;
+    CURSOR cur_dep(manager_id_cur departments.manager_id%TYPE) IS 
+    SELECT * FROM departments WHERE manager_id=manager_id_cur;
+    info departments%ROWTYPE;
+BEGIN
+    FOR tab_tem_empl IN cur_empl LOOP
+        OPEN cur_dep(tab_tem_empl.manager_id);
+        FETCH cur_dep INTO info;
+        IF cur_dep%NOTFOUND THEN
+            DBMS_OUTPUT.PUT_LINE(tab_tem_empl.first_name|| ' no es jefe de nada');
+            
+        ELSE 
+            DBMS_OUTPUT.PUT_LINE(tab_tem_empl.first_name|| ' '||info.department_name);
+        END IF;
+        CLOSE cur_dep;
+    END LOOP;
+END;
 
 -- el primero de empleados
 -- El segundo de departamentos que tenga como parámetro el MANAGER_ID
