@@ -30,3 +30,12 @@ select * from alumnos where nota < (SELECT AVG(nota) FROM alumnos);
 UPDATE alumnos SET nota=  4 WHERE nota< (SELECT min(nota) FROM alumnos);
 /* 8- Elimine los alumnos cuya nota es menor al promedio. */
 delete from alumnos WHERE nota = (SELECT AVG(nota) FROM alumnos );
+
+
+ -- Mostramos los títulos de los libros de "Borges" de editoriales que
+ -- han publicado también libros de "Richard Bach":
+
+-- en esya consulta solo mostrara los codigo_editorial que se encuentran en la subconsulta
+select * from libros where autor like '%Borges%' and codigo_editorial =any (select e.codigo from editoriales e join libros l on codigo_editorial = e.codigo where l.autor like '%Bach%');
+
+--pero si ponemos en lugar de any -- all todos los codigo_editorial deben encontrarse en la subconsulta de lo contrario no se mostrara ninguna tabla
