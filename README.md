@@ -6,3 +6,8 @@ script de las bases de datos para que Chavex repase ...
 
                                                     --(Albert Einstein)
 ```
+
+```javascript
+    // Autor : Thom Maurick Roman Aguilar 
+    // Estudiante de la carrera Ingeniería de Sistemas
+```
