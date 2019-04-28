@@ -16,4 +16,11 @@ IS
 BEGIN
     DBMS_OUTPUT.PUT_LINE('HOLA MUNDO');
 END; 
+-- maneras de llamar a el procedimiento
 CALL pro_1();
+EXECUTE pro_1();
+set SERVEROUTPUT on
+begin
+    pro_1;
+end;
+/
