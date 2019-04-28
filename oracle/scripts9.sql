@@ -24,3 +24,8 @@ begin
     pro_1;
 end;
 /
+
+-- plus
+/*para ver cuantos objetos tenemos en nuestra base de datos de la conexion particular*/
+SELECT OBJECT_TYPE,COUNT(*) FROM USER_OBJECTS
+GROUP BY OBJECT_TYPE;
