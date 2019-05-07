@@ -1,3 +1,4 @@
+-- sqlplus "/as sysdba"
 create user db_roman identified by "123"
 default tablEspace "USERS"
 TEMPORARY TABLESPACE "TEMP";
