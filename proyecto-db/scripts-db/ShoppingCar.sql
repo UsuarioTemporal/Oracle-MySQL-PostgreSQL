@@ -7,3 +7,5 @@ create table client(
     phone_number VARCHAR2(9) unique not null check(length(phone_number)=9),
     email varchar2(100) unique not null
 );
+
+alter table client add constraint pk_client_id PRIMARY KEY(client_id);
