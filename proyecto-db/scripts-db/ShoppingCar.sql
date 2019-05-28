@@ -34,3 +34,19 @@ create table canto(
     canto_id integer primary key,
     name varchar2(20) not null
 );
+
+-- TABLAS DEPENDIENTES
+
+CREATE TABLE RETOUCHING(
+    retouching_id INTEGER PRIMARY KEY,
+    canto_id integer,
+    color_id integer,
+    constraint fk_color_retouching 
+    FOREIGN KEY (canto_id) references canto(canto_id)
+);
+
+/*
+* Aclaraciones sobre la integridad refencial en este proyecto
+*
+*
+*/
