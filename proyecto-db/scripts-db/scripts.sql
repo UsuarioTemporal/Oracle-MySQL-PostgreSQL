@@ -1,10 +1,7 @@
 /* create user  */
 
-CREATE USER db_fact IDENTIFIED BY 'db_fact%'
+CREATE USER db_fact IDENTIFIED BY "db_fact%"
 DEFAULT TABLESPACE "USERS"
-TEMPORAY TABLESPACE "TEMP";
+TEMPORARY TABLESPACE "TEMP";
 
 GRANT ALL PRIVILEGES TO db_fact;
-
-
-/* tables */
