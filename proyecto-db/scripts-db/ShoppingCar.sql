@@ -1,3 +1,4 @@
+-- TABLAS INDEPENDIENTES
 create table client(
     client_id INTEGER,
     name VaRCHAR2(50) NOT NULL,
@@ -9,3 +10,27 @@ create table client(
 );
 
 alter table client add constraint pk_client_id PRIMARY KEY(client_id);
+alter table client add password varchar2(100) not null;
+
+CREATE TABLE CATEGORY(
+    category_id INTEGER,
+    NAME VARCHAR2(50) NOT NULL,
+    PRIMARY KEY(category_id)
+);
+
+CREATE TABLE DIMENSIONS(
+    dimensions_id INTEGER,
+    name VARCHAR2(2) NOT NULL,
+    PRIMARY KEY (dimensions_id)
+);
+
+CREATE TABLE COLOR(
+    color_id integer primary key,
+    internal_color varchar2(50),
+    external_color varchar2(50)
+);
+
+create table canto(
+    canto_id integer primary key,
+    name varchar2(20) not null
+);
