@@ -112,5 +112,8 @@ as
     type sq_array is varray(9) of varchar2(10);
 begin
     sq_array:=sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
+    for sq_name in 1..sq_array.count loop
+        execute immediate 'CREATE SEQUENCE '||sq_name||' start with 1 increment by 1 NOCYCLE';
+    end loop;
 end;
 /
