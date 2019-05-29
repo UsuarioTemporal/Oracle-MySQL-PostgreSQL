@@ -46,7 +46,20 @@ CREATE TABLE RETOUCHING(
 );
 
 /*
-* Aclaraciones sobre la integridad refencial en este proyecto
+* Aclaraciones sobre la integridad referencial en este proyecto para los 
+* compañeros que lean este script
 *
+* En que consiste la integridad referencial , la integridad consiste en que una 
+* llave foreanea exista en su tabla principal , esta se activa cuando creamos
+* llaves foraneas y a aprtir de ese moemento se comprueba cada vez que se modifican
+* los datos que puedan alterarla
+
+
+Cuando se pueden producir errores en los datos ? 
+	- Cuando insertamos una nueva fila en la tabla secundaria y el valor de la clave foránea 
+    no exita en la tabla principal
+	- Cuando modificamos el valor de la clave principal de un registro que tiene
+    hijos
+
 *
 */
