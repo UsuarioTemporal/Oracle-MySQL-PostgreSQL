@@ -42,6 +42,7 @@ CREATE TABLE RETOUCHING(
     canto_id integer,
     color_id integer,
     constraint fk_color_retouching 
+<<<<<<< HEAD
     FOREIGN KEY (color_id) references color(color_id) on delete cascade ,
     constraint fk_canto_retoucing
     foreign key (canto_id) references canto(canto_id) on delete cascade
@@ -64,9 +65,10 @@ create table product(
 
 alter table product add moisture_resistant number default 0 check(moisture_resistant in(1,0)) ;
 
+
 /*
 * Aclaraciones sobre la integridad referencial en este proyecto para los 
-* compañeros que lean este script
+* compaï¿½eros que lean este script
 *
 * En que consiste la integridad referencial , la integridad consiste en que una 
 * llave foreanea exista en su tabla principal , esta se activa cuando creamos
@@ -75,7 +77,7 @@ alter table product add moisture_resistant number default 0 check(moisture_resis
 
 
 Cuando se pueden producir errores en los datos ? 
-	- Cuando insertamos una nueva fila en la tabla secundaria y el valor de la clave foránea 
+	- Cuando insertamos una nueva fila en la tabla secundaria y el valor de la clave forï¿½nea 
     no exita en la tabla principal
 	- Cuando modificamos el valor de la clave principal de un registro que tiene
     hijos
