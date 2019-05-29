@@ -109,6 +109,8 @@ create table detail(
 
 create or replace procedure creative_of_sequences
 as
+    type sq_array is varray(9) of varchar2(10);
 begin
+    sq_array:=sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
 end;
 /
