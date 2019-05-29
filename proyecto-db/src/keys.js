@@ -2,6 +2,6 @@ module.exports = {
     database:{
         user:'db_fact',
         password:'db_fact%',
-        connectString:'localhost'
+        connectString:'localhost/xe'
     }
 }
