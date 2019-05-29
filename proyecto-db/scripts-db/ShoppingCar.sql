@@ -42,7 +42,6 @@ CREATE TABLE RETOUCHING(
     canto_id integer,
     color_id integer,
     constraint fk_color_retouching 
-<<<<<<< HEAD
     FOREIGN KEY (color_id) references color(color_id) on delete cascade ,
     constraint fk_canto_retoucing
     foreign key (canto_id) references canto(canto_id) on delete cascade
