@@ -109,10 +109,13 @@ create table detail(
 
 create or replace procedure creative_of_sequences
 as
-    type sq_array is varray(9) of varchar2(10);
+    type type_sq_array is varray(9) of varchar2(10);
+    sq_array type_sq_array;
+    length_ integer;
 begin
-    sq_array:=sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
-    for sq_name in 1..sq_array.count loop
+    sq_array:=type_sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
+    length_:=sq_array.count;
+    for sq_name in 1..length_ loop
         execute immediate 'CREATE SEQUENCE '||sq_name||' start with 1 increment by 1 NOCYCLE';
     end loop;
 end;
