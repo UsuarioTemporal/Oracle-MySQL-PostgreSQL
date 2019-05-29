@@ -116,10 +116,10 @@ begin
     sq_array:=type_sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
     length_:=sq_array.count;
     for sq_name in 1..length_ loop
-        --execute immediate 'CREATE SEQUENCE '||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
-        DBMS_OUTPUT.PUT_LINE('CREATE SEQUENCE '||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE');
+        execute immediate 'CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
+        --DBMS_OUTPUT.PUT_LINE('CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE');
     end loop;
 end;
-
+/
 
 exec creative_of_sequences;
