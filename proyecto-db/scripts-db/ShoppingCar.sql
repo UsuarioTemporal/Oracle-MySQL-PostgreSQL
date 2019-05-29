@@ -42,8 +42,11 @@ CREATE TABLE RETOUCHING(
     canto_id integer,
     color_id integer,
     constraint fk_color_retouching 
-    FOREIGN KEY (canto_id) references canto(canto_id)
+    FOREIGN KEY (color_id) references color(color_id) ON UPDATE CASCADE ON DELETE RESTRICT,
+    constraint fk_canto_retoucing
+    foreign key (color_id) references canto(color_id) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
 
 /*
 * Aclaraciones sobre la integridad referencial en este proyecto para los 
