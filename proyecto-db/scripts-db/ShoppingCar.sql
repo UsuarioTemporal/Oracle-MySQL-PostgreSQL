@@ -42,8 +42,27 @@ CREATE TABLE RETOUCHING(
     canto_id integer,
     color_id integer,
     constraint fk_color_retouching 
-    FOREIGN KEY (canto_id) references canto(canto_id)
+    FOREIGN KEY (color_id) references color(color_id) on delete cascade ,
+    constraint fk_canto_retoucing
+    foreign key (canto_id) references canto(canto_id) on delete cascade
 );
+
+create table product(
+    product_id integer primary key,
+    name varchar2(50) not null,
+    price number(6,2) check(price>0),
+    retouching_id integer,
+    category_id integer,
+    dimensions_id integer,
+    constraint fk_retouching_product foreign key(retouching_id) references retouching(retouching_id)
+    on delete cascade,
+    constraint fk_category_product foreign key(category_id) references category(category_id)
+    on delete cascade,
+    constraint fk_dimensions_product foreign key(dimensions_id) references dimensions(dimensions_id)
+    on delete cascade
+);
+
+alter table product add moisture_resistant number default 0 check(moisture_resistant in(1,0)) ;
 
 /*
 * Aclaraciones sobre la integridad referencial en este proyecto para los 
@@ -63,3 +82,32 @@ Cuando se pueden producir errores en los datos ?
 
 *
 */
+
+create table bill(
+    bill_id integer primary key,
+    client_id integer,
+    bill_date date ,
+    constraint fk_client_bill foreign key(client_id) 
+    references client(client_id) on delete cascade
+);
+
+create table detail(
+    detail_id integer primary key,
+    bill_id integer,
+    product_id integer,
+    quantity number check(quantity>=0),
+    price number(6,2) check(price>0),
+    constraint fk_product_datail foreign key(product_id) 
+    references product(product_id) on delete cascade,
+    constraint fk_bill_detail foreign key(bill_id) 
+    references bill(bill_id) on delete cascade
+);
+
+
+-- SEQUENCIAS
+
+create or replace procedure creative_of_sequences
+as
+begin
+end;
+/
