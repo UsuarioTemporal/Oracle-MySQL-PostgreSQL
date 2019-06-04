@@ -123,3 +123,15 @@ end;
 /
 
 exec creative_of_sequences;
+
+alter table bill modify bill_date date default sysdate not null;
+
+
+
+
+
+
+
+
+
+
