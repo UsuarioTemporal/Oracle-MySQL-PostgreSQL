@@ -142,4 +142,14 @@ create table audit_table(
     constraint fk_client_audit foreign key (client_id) 
     references client(client_id) on delete cascade
 );
+select * from audit_table;
 
+create table profile(
+    profile_id number primary key not null,
+    profile_name varchar2(20) not null,
+    constraint uk_profile_name UNIQUE(profile_name)
+);
+
+alter table client add profile_id number not null;
+alter table client add constraint fk_profile_client 
+foreign key(profile_id) references profile(profile_id) on delete cascade;
