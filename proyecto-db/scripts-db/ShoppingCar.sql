@@ -124,14 +124,22 @@ end;
 
 exec creative_of_sequences;
 
+--- 
+
 alter table bill modify bill_date date default sysdate not null;
 
 
+--- creando la tabla auditoria
 
-
-
-
-
-
-
+create table audit_table(
+    audit_id NUMBER primary key,
+    audit_date TIMESTAMP  DEFAULT SYSDATE NOT NULL,
+    client_id NUMBER,
+    action VARCHAR2(20) NOT NULL,
+    name_table VARCHAR2(20) NOT NULL,
+    previous_data varchar2(1000) not null ,
+    new_data varchar2(1000) ,
+    constraint fk_client_audit foreign key (client_id) 
+    references client(client_id) on delete cascade
+);
 
