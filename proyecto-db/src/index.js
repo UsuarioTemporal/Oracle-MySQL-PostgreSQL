@@ -8,12 +8,17 @@ app.set('port',process.env.PORT || 8000)
 
 // middlewares : son funciones que se ejecutan cada vez que un cliente envia una petiticon al servidor
 app.use(morgan('dev'))
+app.use(express.urlencoded({extended:false})) // esto sirve para poder aceptar los datos que me envia el usuario desde los formularios
+app.use(express.json())
 
 // global variables
+app.use((req,res,next)=>{
 
+    next() // para continuar con el resto de codigo
+})
 
 // routes
-
+app.use(require('./routes'))
 // public
 
 //starting the server
