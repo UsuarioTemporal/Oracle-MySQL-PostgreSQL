@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev" : "nodemon src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Thom Maurick Roman Aguilar",
@@ -19,5 +20,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "timeago.js": "^4.0.0-beta.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
