@@ -4,22 +4,15 @@ const oracle = require('oracledb'),
     print = console.log,
     SQL = `SELECT * FROM client`
 
-// lo que hace es tener una "ESPECIE" de "HILOS" que se iran ejecutando 
-// y cada uno irá haciendo una tarea a la vez en sequencia , esto nos ayudara en produccion
+// const pool = oracle.createPool(database)
+// pool.then(e=>e.getConnection())
+const fnOracle = async ()=>{
+    const pool = await oracle.createPool(database)
+    let connection = await pool.getConnection()
+    let result = await connection.execute(SQL)
+    let data = result.rows
+    connection.close().then(()=>console.log('cerrado exitosamente ')).catch(err=>console.log(err.message))
+    return data
+}
 
-// const pool = oracle.createPool(database);
-
-oracle.getConnection(database,(err,connection)=>{
-    if (err) return print(`Algo fallo ${err.code} ${err.message}`)
-    // connection.release()
-    connection.execute(SQL,(err,result)=>{
-        console.log(result.rows)
-        connection.close(err=>{
-            if(err) return console.log(err.message)
-        });
-    })
-    print('Conectado')
-    return
-})
-// oracle.query = promisify(oracle.query)
-module.exports = oracle
+module.exports = fnOracle()
