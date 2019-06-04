@@ -113,7 +113,8 @@ as
     sq_array type_sq_array;
     length_ integer;
 begin
-    sq_array:=type_sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
+    --sq_array:=type_sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
+    sq_array:=type_sq_array('audit','profile');
     length_:=sq_array.count;
     for sq_name in 1..length_ loop
         execute immediate 'CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
@@ -153,3 +154,10 @@ create table profile(
 alter table client add profile_id number not null;
 alter table client add constraint fk_profile_client 
 foreign key(profile_id) references profile(profile_id) on delete cascade;
+
+
+insert into profile values (sq_profile.nextval,'Administrador');
+
+insert into profile values (sq_profile.nextval,'cliente');
+
+select * from profile;
