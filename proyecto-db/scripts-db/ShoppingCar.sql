@@ -174,6 +174,10 @@ SELECT md5Hash('thom') md5_val
 insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
 values (SQ_CLIENT.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',md5Hash('thom'),1);
 
+insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
+values (SQ_CLIENT.nextval,'Erick','Huaranca','Rivas','78654321','944121369','erick@gmail.com',md5Hash('chavo'),2);
+
+select * from client;
 --select * from v$version;
 
 
