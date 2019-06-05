@@ -165,8 +165,12 @@ select * from profile;
 --funcion para encriptar la contraseña 
 create or replace function md5Hash(input_string in varchar2) return varchar2 is
 begin
-    return input_string;
+    return DBMS_OBFUSCATION_TOOLKIT.md5 (input => UTL_RAW.cast_to_raw(input_string));
 end;
 /
+SELECT md5Hash('thom') md5_val
+  FROM DUAL;
 
---insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password) values (SQ_CLIENT.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',);
+--insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) values (SQ_CLIENT.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com','',1);
+
+--select * from v$version; 
