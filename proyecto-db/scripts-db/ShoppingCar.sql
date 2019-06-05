@@ -180,5 +180,5 @@ values (SQ_CLIENT.nextval,'Erick','Huaranca','Rivas','78654321','944121369','eri
 select * from client;
 --select * from v$version;
 
-
+commit;
 
