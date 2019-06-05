@@ -161,3 +161,12 @@ insert into profile values (sq_profile.nextval,'Administrador');
 insert into profile values (sq_profile.nextval,'cliente');
 
 select * from profile;
+
+--funcion para encriptar la contraseña 
+create or replace function md5Hash(input_string in varchar2) return varchar2 is
+begin
+    return input_string;
+end;
+/
+
+--insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password) values (SQ_CLIENT.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',);
