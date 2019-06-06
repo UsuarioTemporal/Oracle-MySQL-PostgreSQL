@@ -12,10 +12,10 @@ CREATE TABLE CATEGORY(
     PRIMARY KEY(category_id)
 );
 
-CREATE TABLE DIMENSIONS(
-    dimensions_id INTEGER,
+CREATE TABLE TYPE_OF_MEASURE(
+    measure_id INTEGER,
     name VARCHAR2(2) NOT NULL,
-    PRIMARY KEY (dimensions_id)
+    PRIMARY KEY (measure_id)
 );
 
 CREATE TABLE COLOR(
@@ -30,9 +30,9 @@ create table canto(
 );
 
 -- TABLAS DEPENDIENTES
-create table user(
-    user_id INTEGER,
-    name VaRCHAR2(50) NOT NULL,
+create table user_table(
+    user_id number,
+    name VARCHAR2(50) NOT NULL,
     paternal_surname VARCHAR2(50) NOT NULL,
     maternal_surname VARCHAR2(50) NOT NULL,
     dni VARCHAR2(8) unique not null check(length(dni)=8),
@@ -40,8 +40,8 @@ create table user(
     email varchar2(100) unique not null
 );
 
-alter table user add constraint pk_user_id PRIMARY KEY(user_id);
-alter table user add password varchar2(100) not null;
+alter table user_table add constraint pk_user_id PRIMARY KEY(user_id);
+alter table user_table add password varchar2(100) not null;
 
 CREATE TABLE RETOUCHING(
     retouching_id INTEGER PRIMARY KEY,
@@ -59,12 +59,15 @@ create table product(
     price number(6,2) check(price>0),
     retouching_id integer,
     category_id integer,
-    dimensions_id integer,
+    measure_id integer,
+    height number not null check(height>0),
+    width number not null check(width>0),
+    length_product number not null check(length_product>0),
     constraint fk_retouching_product foreign key(retouching_id) references retouching(retouching_id)
     on delete cascade,
     constraint fk_category_product foreign key(category_id) references category(category_id)
     on delete cascade,
-    constraint fk_dimensions_product foreign key(dimensions_id) references dimensions(dimensions_id)
+    constraint fk_measure_product foreign key(measure_id) references TYPE_OF_MEASURE(measure_id)
     on delete cascade
 );
 
@@ -94,8 +97,8 @@ create table bill(
     bill_id integer primary key,
     user_id integer,
     bill_date date ,
-    constraint fk_user_bill foreign key(cuser_id) 
-    references client(user_id) on delete cascade
+    constraint fk_user_bill foreign key(user_id) 
+    references user_table(user_id) on delete cascade
 );
 
 create table detail(
@@ -115,16 +118,14 @@ create table detail(
 set SERVEROUTPUT on
 create or replace procedure creative_of_sequences
 as
-    type type_sq_array is varray(9) of varchar2(10);
+    type type_sq_array is varray(11) of varchar2(11);
     sq_array type_sq_array;
     length_ integer;
 begin
-    --sq_array:=type_sq_array('product','detail','client','category','bill','retouching','dimensions','color','canto');
-    sq_array:=type_sq_array('audit','profile');
+    sq_array:=type_sq_array('product','detail','user','category','bill','retouching','MEASURE','color','canto','audit','profile');
     length_:=sq_array.count;
     for sq_name in 1..length_ loop
         execute immediate 'CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
-        --DBMS_OUTPUT.PUT_LINE('CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE');
     end loop;
 end;
 /
@@ -141,20 +142,27 @@ alter table bill modify bill_date date default sysdate not null;
 create table audit_table(
     audit_id NUMBER primary key,
     audit_date TIMESTAMP  DEFAULT SYSDATE NOT NULL,
-    client_id NUMBER,
+    user_id NUMBER,
     action VARCHAR2(20) NOT NULL,
     name_table VARCHAR2(20) NOT NULL,
     previous_data varchar2(1000) not null ,
     new_data varchar2(1000) ,
-    constraint fk_client_audit foreign key (client_id) 
-    references client(client_id) on delete cascade
+    constraint fk_user_audit foreign key (user_id) 
+    references user_table(user_id) on delete cascade
 );
 select * from audit_table;
+create table mode_product(
+    mode_id number primary key not null,
+    name_mode varchar2(1) unique not null
+);
+
+alter table product add mode_id number not null;
+alter table product add constraint fk_mode_product foreign key(mode_id)
+references mode_product(mode_id);
 
 
-
-alter table client add profile_id number not null;
-alter table client add constraint fk_profile_client 
+alter table user_table add profile_id number not null;
+alter table user_table add constraint fk_profile_user 
 foreign key(profile_id) references profile(profile_id) on delete cascade;
 
 
@@ -173,17 +181,16 @@ end;
 SELECT md5Hash('thom') md5_val
   FROM DUAL;
 
-insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
-values (SQ_CLIENT.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',md5Hash('thom'),1);
+insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
+values (SQ_user.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',md5Hash('thom'),1);
 
-insert into client(client_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
-values (SQ_CLIENT.nextval,'Erick','Huaranca','Rivas','78654321','944121369','erick@gmail.com',md5Hash('chavo'),2);
+insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
+values (SQ_user.nextval,'Erick','Huaranca','Rivas','78654321','944121369','erick@gmail.com',md5Hash('chavo'),2);
 
-select * from client;
+select * from user_table;
 --select * from v$version;
 
 commit;
-
 
 --ingresando color
 insert into color values(SQ_COLOR.nextval,'blanco','blanco');
@@ -204,20 +211,27 @@ insert into retouching values(SQ_RETOUCHING.nextval,1,2);
 insert into retouching values(SQ_RETOUCHING.nextval,2,2);
 insert into retouching values(SQ_RETOUCHING.nextval,3,2);
 
+commit ;
 -- ingresnado dimensiones
-insert into dimensions values(SQ_DIMENSIONS.nextval,'ML');
-insert into dimensions values(SQ_DIMENSIONS.nextval,'M3');
+insert into type_of_measure values(SQ_MEASURE.nextval,'ML');
+insert into type_of_measure values(SQ_MEASURE.nextval,'M3');
 
 
 -- ingresando categoria
-insert into category values(SQ_CATEGORY.nextval,'ropero');
-insert into category values(SQ_CATEGORY.nextval,'cocina');
+insert into category values(SQ_CATEGORY.nextval,'sin puertas');
+insert into category values(SQ_CATEGORY.nextval,'puertas batientes');
+insert into category values(SQ_CATEGORY.nextval,'puertas corredizas');
+insert into category values(SQ_CATEGORY.nextval,'parte alta');
+insert into category values(SQ_CATEGORY.nextval,'parte baja');
+insert into category values(SQ_CATEGORY.nextval,'torre');
+
+
 
 -- ingresando productos
+commit;
+insert into product values (sq_product.nextval,350,);
 
-insert into product values (sq_product.nextval);
-
-
+/*
 drop table audit_table;
 drop table bill;
 drop table canto;
@@ -229,5 +243,5 @@ drop table dimensions;
 drop table product;
 drop table profile;
 drop table retouching;
-
+*/
 
