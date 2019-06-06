@@ -19,7 +19,12 @@ app.use((req,res,next)=>{
 
 // routes
 app.use(require('./routes'))
+app.use(require('./routes/authentication'))
+app.use(require('/links','./routes/links'))
+
 // public
+app.use(express.static())
+
 
 //starting the server
 app.listen(app.get('port'),()=>console.log(`escuchando en el puerto ${app.get(`port`)}`))

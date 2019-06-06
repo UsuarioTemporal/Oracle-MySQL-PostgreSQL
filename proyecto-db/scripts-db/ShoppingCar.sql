@@ -182,3 +182,36 @@ select * from client;
 
 commit;
 
+
+--ingresando color
+insert into color values(SQ_COLOR.nextval,'blanco','blanco');
+insert into color values(SQ_COLOR.nextval,'color','blanco');
+
+
+
+--ingresando canto
+insert into canto values(SQ_CANTO.nextval,'delgado');
+insert into canto values(SQ_CANTO.nextval,'grueso');
+insert into canto values(SQ_CANTO.nextval,'T alumnio');
+
+--ingresando retouching
+insert into retouching values(SQ_RETOUCHING.nextval,1,1);
+insert into retouching values(SQ_RETOUCHING.nextval,2,1);
+insert into retouching values(SQ_RETOUCHING.nextval,3,1);
+insert into retouching values(SQ_RETOUCHING.nextval,1,2);
+insert into retouching values(SQ_RETOUCHING.nextval,2,2);
+insert into retouching values(SQ_RETOUCHING.nextval,3,2);
+
+-- ingresnado dimensiones
+insert into dimensions values(SQ_DIMENSIONS.nextval,'ML');
+insert into dimensions values(SQ_DIMENSIONS.nextval,'M3');
+
+
+-- ingresando categoria
+insert into category values(SQ_CATEGORY.nextval,'ropero');
+insert into category values(SQ_CATEGORY.nextval,'cocina');
+
+-- ingresando productos
+
+insert into product values (sq_product.nextval);
+

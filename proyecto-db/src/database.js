@@ -11,8 +11,9 @@ const fnOracle = async ()=>{
     let connection = await pool.getConnection()
     let result = await connection.execute(SQL)
     let data = result.rows
-    connection.close().then(()=>console.log('cerrado exitosamente ')).catch(err=>console.log(err.message))
+    await connection.close()
     return data
 }
 
 module.exports = fnOracle()
+fnOracle().then(data=>console.log(data)).catch(console.error)
