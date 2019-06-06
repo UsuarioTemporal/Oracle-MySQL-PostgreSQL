@@ -1,16 +1,10 @@
 -- TABLAS INDEPENDIENTES
-create table client(
-    client_id INTEGER,
-    name VaRCHAR2(50) NOT NULL,
-    paternal_surname VARCHAR2(50) NOT NULL,
-    maternal_surname VARCHAR2(50) NOT NULL,
-    dni VARCHAR2(8) unique not null check(length(dni)=8),
-    phone_number VARCHAR2(9) unique not null check(length(phone_number)=9),
-    email varchar2(100) unique not null
+create table profile(
+    profile_id number primary key not null,
+    profile_name varchar2(20) not null,
+    constraint uk_profile_name UNIQUE(profile_name)
 );
 
-alter table client add constraint pk_client_id PRIMARY KEY(client_id);
-alter table client add password varchar2(100) not null;
 
 CREATE TABLE CATEGORY(
     category_id INTEGER,
@@ -36,6 +30,18 @@ create table canto(
 );
 
 -- TABLAS DEPENDIENTES
+create table user(
+    user_id INTEGER,
+    name VaRCHAR2(50) NOT NULL,
+    paternal_surname VARCHAR2(50) NOT NULL,
+    maternal_surname VARCHAR2(50) NOT NULL,
+    dni VARCHAR2(8) unique not null check(length(dni)=8),
+    phone_number VARCHAR2(9) unique not null check(length(phone_number)=9),
+    email varchar2(100) unique not null
+);
+
+alter table user add constraint pk_user_id PRIMARY KEY(user_id);
+alter table user add password varchar2(100) not null;
 
 CREATE TABLE RETOUCHING(
     retouching_id INTEGER PRIMARY KEY,
@@ -86,10 +92,10 @@ Cuando se pueden producir errores en los datos ?
 
 create table bill(
     bill_id integer primary key,
-    client_id integer,
+    user_id integer,
     bill_date date ,
-    constraint fk_client_bill foreign key(client_id) 
-    references client(client_id) on delete cascade
+    constraint fk_user_bill foreign key(cuser_id) 
+    references client(user_id) on delete cascade
 );
 
 create table detail(
@@ -145,11 +151,7 @@ create table audit_table(
 );
 select * from audit_table;
 
-create table profile(
-    profile_id number primary key not null,
-    profile_name varchar2(20) not null,
-    constraint uk_profile_name UNIQUE(profile_name)
-);
+
 
 alter table client add profile_id number not null;
 alter table client add constraint fk_profile_client 
@@ -214,4 +216,18 @@ insert into category values(SQ_CATEGORY.nextval,'cocina');
 -- ingresando productos
 
 insert into product values (sq_product.nextval);
+
+
+drop table audit_table;
+drop table bill;
+drop table canto;
+drop table category;
+drop table client;
+drop table color;
+drop table detail;
+drop table dimensions;
+drop table product;
+drop table profile;
+drop table retouching;
+
 
