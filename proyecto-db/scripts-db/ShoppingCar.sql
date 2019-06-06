@@ -241,6 +241,13 @@ commit;
 insert into product values (sq_product.nextval,'cocina',350,1,4,1,20,20,20,0,1,10000);
 insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,2,10000);
 insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,3,10000);
+
+insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,0,1,10000);
+insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,0,2,10000);
+insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,0,3,10000);
+
+
+
 /*
 drop table audit_table;
 drop table bill;
