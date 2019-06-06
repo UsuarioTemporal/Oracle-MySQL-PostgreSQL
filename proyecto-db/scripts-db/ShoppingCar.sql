@@ -70,7 +70,7 @@ create table product(
     constraint fk_measure_product foreign key(measure_id) references TYPE_OF_MEASURE(measure_id)
     on delete cascade
 );
-
+alter table product add quantity number not null check(quantity>=0);
 alter table product add moisture_resistant number default 0 check(moisture_resistant in(1,0)) ;
 
 
@@ -225,12 +225,22 @@ insert into category values(SQ_CATEGORY.nextval,'parte alta');
 insert into category values(SQ_CATEGORY.nextval,'parte baja');
 insert into category values(SQ_CATEGORY.nextval,'torre');
 
+insert into mode_product values(1,'A');
+insert into mode_product values(2,'B');
+insert into mode_product values(3,'Z');
 
-
+select * from RETOUCHING;
+select * from canto;
+select * from color;
+select * from category;
+select * from type_of_measure;
+select * from mode_product;
+select * from product;
 -- ingresando productos
 commit;
-insert into product values (sq_product.nextval,350,);
-
+insert into product values (sq_product.nextval,'cocina',350,1,4,1,20,20,20,0,1,10000);
+insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,2,10000);
+insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,3,10000);
 /*
 drop table audit_table;
 drop table bill;
