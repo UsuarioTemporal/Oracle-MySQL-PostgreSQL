@@ -246,6 +246,16 @@ insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,0
 insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,0,2,10000);
 insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,0,3,10000);
 
+set serveroutput on
+create or replace procedure request_product
+is
+    cur_prod product%rowtype;
+begin
+    select * into cur_prod from product;
+    --return cur_prod;
+end;
+/
+
 
 
 /*
@@ -261,4 +271,6 @@ drop table product;
 drop table profile;
 drop table retouching;
 */
+
+
 

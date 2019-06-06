@@ -2,7 +2,7 @@ const oracle = require('oracledb'),
     {promisify}=require('util'),
     {database} = require('./keys'),
     print = console.log,
-    SQL = `SELECT * FROM client`
+    SQL = `SELECT * FROM product`
 
 // const pool = oracle.createPool(database)
 // pool.then(e=>e.getConnection())
