@@ -88,11 +88,42 @@ end;
 /
 -- primo sin rangos
 declare
-
+    numberInput number;
+    
 begin
+    numberinput:=&number;
+    for val in 2..(numberInput-1) loop
+        if mod(numberInput,val)=0 then
+            DBMS_OUTPUT.PUT_LINE('No es primo');
+            return;
+        end if;
+     end loop;
+     DBMS_OUTPUT.PUT_LINE('Es primo');
 end;
 /
 --primos con rangos
+
+declare
+    rangeA number;
+    rangeB number;
+    flag boolean;
+begin
+    rangeA:=&firstRange;
+    rangeB:=&secondRange;
+    
+    for val in rangeA..rangeB loop
+        flag:=true;
+        for val2 in 2..(val-1) loop
+            if mod(val,val2)=0 then
+                flag:=false;
+                exit;
+            end if;
+        end loop;
+        if flag=true and val>1 then
+            DBMS_OUTPUT.PUT_LINE(val|| ' es primo');
+        end if;
+    end loop;
+end;
 
 --problema ruso
 
