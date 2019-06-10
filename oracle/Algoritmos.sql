@@ -69,9 +69,35 @@ end;
 --capicua
 
 declare
+    numberInput number;
+    reverseNumber number:=0;
+    temp number;
+begin
+    numberInput:=&numberInput;
+    temp :=numberInput;
+    while temp>0 loop
+        reverseNumber :=mod(temp,10) + reverseNumber*10;
+        temp:=(temp-mod(temp,10))/10;
+    end loop;
+    if numberInput=reverseNumber then
+        DBMS_OUTPUT.PUT_LINE('Es capicua');
+        return;
+    end if;
+    DBMS_OUTPUT.PUT_LINE('no es capicua');
+end;
+/
+-- primo sin rangos
+declare
+
 begin
 end;
 /
+--primos con rangos
+
+--problema ruso
+
+--palabra pentavocalica
+
 
 --mcm
 
