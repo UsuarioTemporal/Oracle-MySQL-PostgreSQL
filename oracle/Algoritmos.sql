@@ -126,6 +126,11 @@ begin
 end;
 
 --problema ruso
+/*En una olimpiada rusa se propuso el siguiente problema: 
+Si escribimos todos los números enteros empezando por el uno,
+uno al lado del otro (o sea, 1234567891011121314…), ¿qué dígito ocupa la posición 206788?*/
+
+
 
 --palabra pentavocalica
 
@@ -134,4 +139,5 @@ end;
 
 
 --mcd
+
 

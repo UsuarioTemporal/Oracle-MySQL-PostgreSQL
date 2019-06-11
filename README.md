@@ -1,4 +1,5 @@
 # Oracle-MySQL-PostgreSQL
+
 script de las bases de datos para que Chavex repase ... 
 
 ```sql

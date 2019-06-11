@@ -246,17 +246,26 @@ insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,0
 insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,0,2,10000);
 insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,0,3,10000);
 
-set serveroutput on
-create or replace procedure request_product
-is
+select * from product;
+
+declare
     cur_prod product%rowtype;
 begin
-    select * into cur_prod from product;
+    select * into cur_prod from product where product_id=1;
     --return cur_prod;
+    DBMS_OUTPUT.put_line(cur_prod.product_id);
 end;
 /
-
-
+set serveroutput on
+DECLARE
+    CURSOR nombre_cursor IS SELECT * FROM product;
+    -- empleados employees%ROWTYPE;
+BEGIN
+    FOR emp in nombre_cursor LOOP
+        DBMS_OUTPUT.PUT_LINE(emp.name);
+    END LOOP;
+END;
+/
 
 /*
 drop table audit_table;
