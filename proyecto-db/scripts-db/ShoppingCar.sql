@@ -324,9 +324,22 @@ end;
 select * from table(fn_get_product_table());
 
 -- funcion para autenticar al usuario
-select * from user_table;
 
-create or replace procedure authentication_user(email_input in varchar2,pass in varchar2)
+select * from user_table;
+create or replace type user_type
+as OBJECT
+(
+    user_id number,
+    name_n varchar2(50),
+    profile_id number(6,2),
+    profile_name varchar2(50)
+);
+
+create or replace type user_table_type
+as table of user_type;    
+
+create or replace function authenticationUser(email_input in varchar2,pass in varchar2) return user_table_type
+pipelined
 as
     cursor cur_user is select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
     where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
@@ -335,35 +348,30 @@ as
     no_user exception;
 begin
         for data_use in cur_user loop
+            count_users:=count_users+1;
             if count_users>1 then
                 raise many_users; 
+            else
+                pipe row (user_type( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
+                return;
             end if;
-            count_users:=count_users+1;
+        
         end loop;
         if count_users=-1 then
             raise no_user;
         end if;
         exception 
             when no_user then
-                Raise_application_error(-200010,'Incorrectsado');
+                Raise_application_error(-20010,'Usuario Incorrecto');
             when many_users then 
-                Raise_application_error(-200010,'base de datos fallando');
-        
+                Raise_application_error(-20010,'base de datos fallando');
+       
 end;
 /
 
-exec authentication_user('thomtwd@gmail.com','thm');
 
-create or replace type user_type
-as OBJECT
-(
-    user_id number,
-    name varchar2(50),
-    profile_id number(6,2),
-    profile_name varchar2(50)
-);
-create or replace type user_table_type
-as table of user_type;             
+select * from table(authenticationUser('thomtwd@gmail.com','thom'));
+         
           
 
 
