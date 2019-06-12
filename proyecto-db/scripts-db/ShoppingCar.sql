@@ -254,7 +254,7 @@ declare
 begin
     select * into cur_prod from product where product_id=1;
     --return cur_prod;
-    DBMS_OUTPUT.put_line(cur_prod.product_id);
+    --DBMS_OUTPUT.put_line(cur_prod.product_id);
 end;
 /
 set serveroutput on
@@ -267,6 +267,26 @@ BEGIN
     END LOOP;
 END;
 /
+
+create or replace function fn_get_proudcts
+return SYS_REFCURSOR
+AS
+    my_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN my_cursor FOR SELECT * FROM product;
+    return my_cursor;
+END fn_get_proudcts;
+/
+select * from product;
+create or replace type produc_type
+as OBJECT
+(
+    product_id product_id%type,
+    name name%type,
+    price price%type,
+    retouching_id retouching_id%type,
+    category_id category_id%type
+);
 
 /*
 drop table audit_table;
