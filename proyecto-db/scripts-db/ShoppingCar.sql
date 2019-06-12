@@ -309,16 +309,17 @@ begin
                                 v_rec.retouching_id,
                                 v_rec.category_id,
                                 v_rec.measure_id,
-                                v_rec.height,width,
+                                v_rec.height,v_rec.width,
                                 v_rec.length_product,
                                 v_rec.quantity,
-                                v_rec.moisture_resistant,mode_id
+                                v_rec.moisture_resistant,v_rec.mode_id
                                 ));
     end loop;
     return;
 end;
 /
 
+select * from table(fn_get_product_table());
 /*
 drop table audit_table;
 drop table bill;
