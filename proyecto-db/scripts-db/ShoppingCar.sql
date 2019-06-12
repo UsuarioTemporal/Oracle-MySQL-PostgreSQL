@@ -278,15 +278,26 @@ BEGIN
 END fn_get_proudcts;
 /
 select * from product;
-create or replace type produc_type
+create or replace type product_type
 as OBJECT
 (
-    product_id product_id%type,
-    name name%type,
-    price price%type,
-    retouching_id retouching_id%type,
-    category_id category_id%type
+    product_id number,
+    name varchar2(50),
+    price number(6,2),
+    retouching_id number,
+    category_id number,
+    measure_id number,
+    height number,
+    width number,
+    length_product number,
+    quantity number,
+    moisture_resistant number,
+    mode_id number
 );
+create or replace type product_table_type
+as table of product_type;
+
+
 
 /*
 drop table audit_table;
