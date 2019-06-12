@@ -371,7 +371,9 @@ end;
 
 select * from table(authenticationUser('thomtwd@gmail.com','thom'));
          
-          
+--trigger para la auditoria de productos
+create or replace trigger tg_audit_table_AU after update on audit_table for each 
+            row insert into audit_table values();
 
 
 /*
