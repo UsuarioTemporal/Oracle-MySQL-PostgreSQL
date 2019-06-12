@@ -351,18 +351,17 @@ begin
             count_users:=count_users+1;
             if count_users>1 then
                 raise many_users; 
-            else
-                pipe row (user_type( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
-                return;
             end if;
-        
+            pipe row (user_type( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
         end loop;
         if count_users=-1 then
             raise no_user;
+        else
+            return;
         end if;
         exception 
             when no_user then
-                Raise_application_error(-20010,'Usuario Incorrecto');
+                Raise_application_error(-20010,'Usuario Incorrecto o contraseña incorrecta');
             when many_users then 
                 Raise_application_error(-20010,'base de datos fallando');
        
