@@ -268,6 +268,8 @@ BEGIN
 END;
 /
 
+
+
 create or replace function fn_get_proudcts
 return SYS_REFCURSOR
 AS
@@ -322,8 +324,32 @@ end;
 select * from table(fn_get_product_table());
 
 -- funcion para autenticar al usuario
+select * from user_table;
 
-create or replace procedure authentication_user()
+create or replace function fn_get_user(email_input in varchar2)
+return sys_refcursor
+as
+    my_cursor_user sys_refcursor;
+begin
+    open my_cursor_user for select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
+    where us.email=email_input and us.password=md5Hash('thom') and pro.profile_id=us.profile_id;
+    return my_cursor_user;
+end;
+/
+
+create or replace type user_type
+as OBJECT
+(
+    user_id number,
+    name varchar2(50),
+    profile_id number(6,2),
+    profile_name varchar2(50)
+);
+create or replace type user_table_type
+as table of user_type;             
+          
+create or replace procedure authentication_user(email in varchar2,password_user in varchar2)
+return user_table_type
 as
 begin
 end;
