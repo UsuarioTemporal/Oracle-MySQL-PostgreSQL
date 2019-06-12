@@ -320,6 +320,15 @@ end;
 /
 
 select * from table(fn_get_product_table());
+
+-- funcion para autenticar al usuario
+
+create or replace procedure authentication_user()
+as
+begin
+end;
+/
+
 /*
 drop table audit_table;
 drop table bill;
