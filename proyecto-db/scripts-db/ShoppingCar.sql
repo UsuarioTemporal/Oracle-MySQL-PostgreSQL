@@ -330,7 +330,7 @@ create or replace procedure authentication_user(email_input in varchar2,pass in 
 as
     cursor cur_user is select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
     where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
-    count_user number:=-1;
+    count_users number:=-1;
     many_users exception;
     no_user exception;
 begin
@@ -338,17 +338,21 @@ begin
             if count_users>1 then
                 raise many_users; 
             end if;
+            count_users:=count_users+1;
         end loop;
-        if count_users then
+        if count_users=-1 then
             raise no_user;
         end if;
         exception 
             when no_user then
-                Raise_application_error(-200010,'Incorrecto');
+                Raise_application_error(-200010,'Incorrectsado');
             when many_users then 
                 Raise_application_error(-200010,'base de datos fallando');
+        
 end;
 /
+
+exec authentication_user('thomtwd@gmail.com','thm');
 
 create or replace type user_type
 as OBJECT
