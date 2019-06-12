@@ -326,14 +326,27 @@ select * from table(fn_get_product_table());
 -- funcion para autenticar al usuario
 select * from user_table;
 
-create or replace function fn_get_user(email_input in varchar2)
-return sys_refcursor
+create or replace procedure authentication_user(email_input in varchar2,pass in varchar2)
 as
-    my_cursor_user sys_refcursor;
+    cursor cur_user is select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
+    where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
+    count_user number:=-1;
+    many_users exception;
+    no_user exception;
 begin
-    open my_cursor_user for select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
-    where us.email=email_input and us.password=md5Hash('thom') and pro.profile_id=us.profile_id;
-    return my_cursor_user;
+        for data_use in cur_user loop
+            if count_users>1 then
+                raise many_users; 
+            end if;
+        end loop;
+        if count_users then
+            raise no_user;
+        end if;
+        exception 
+            when no_user then
+                Raise_application_error(-200010,'Incorrecto');
+            when many_users then 
+                Raise_application_error(-200010,'base de datos fallando');
 end;
 /
 
@@ -348,12 +361,7 @@ as OBJECT
 create or replace type user_table_type
 as table of user_type;             
           
-create or replace procedure authentication_user(email in varchar2,password_user in varchar2)
-return user_table_type
-as
-begin
-end;
-/
+
 
 /*
 drop table audit_table;
