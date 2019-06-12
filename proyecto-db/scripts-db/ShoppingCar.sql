@@ -172,7 +172,7 @@ insert into profile values (sq_profile.nextval,'cliente');
 
 select * from profile;
 
---funcion para encriptar la contraseña 
+--funcion para encriptar la contraseï¿½a 
 create or replace function md5Hash(input_string in varchar2) return varchar2 is
 begin
     return DBMS_OBFUSCATION_TOOLKIT.md5 (input => UTL_RAW.cast_to_raw(input_string));
@@ -234,17 +234,18 @@ select * from canto;
 select * from color;
 select * from category;
 select * from type_of_measure;
+select * from moisture_resistant;
 select * from mode_product;
 select * from product;
 -- ingresando productos
 commit;
-insert into product values (sq_product.nextval,'cocina',350,1,4,1,20,20,20,0,1,10000);
-insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,2,10000);
-insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,0,3,10000);
+insert into product values (sq_product.nextval,'cocina',350,1,4,1,20,20,20,10000,0,1);
+insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,10000,0,2);
+insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,10000,0,3);
 
-insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,0,1,10000);
-insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,0,2,10000);
-insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,0,3,10000);
+insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,10000,0,1);
+insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,10000,0,2);
+insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,10000,0,3);
 
 select * from product;
 

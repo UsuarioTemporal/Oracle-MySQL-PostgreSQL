@@ -12,18 +12,18 @@ app.use(express.urlencoded({extended:false})) // esto sirve para poder aceptar l
 app.use(express.json())
 
 // global variables
-app.use((req,res,next)=>{
+//app.use((req,res,next)=>{
 
-    next() // para continuar con el resto de codigo
-})
+  //  next() // para continuar con el resto de codigo
+//})
 
 // routes
 app.use(require('./routes'))
-app.use(require('./routes/authentication'))
-app.use(require('/links','./routes/links'))
+//app.use(require('./routes/authentication'))
+//app.use(require('/links','./routes/links'))
 
 // public
-app.use(express.static())
+//app.use(express.static())
 
 
 //starting the server
