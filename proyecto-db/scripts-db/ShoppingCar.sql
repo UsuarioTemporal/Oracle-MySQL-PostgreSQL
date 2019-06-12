@@ -297,7 +297,27 @@ as OBJECT
 create or replace type product_table_type
 as table of product_type;
 
-
+create or replace function fn_get_product_table
+return product_table_type
+pipelined
+as
+begin
+    for v_rec in (select * from product) loop
+        pipe row (product_type(v_rec.product_id ,
+                                v_rec.name,
+                                v_rec.price,
+                                v_rec.retouching_id,
+                                v_rec.category_id,
+                                v_rec.measure_id,
+                                v_rec.height,width,
+                                v_rec.length_product,
+                                v_rec.quantity,
+                                v_rec.moisture_resistant,mode_id
+                                ));
+    end loop;
+    return;
+end;
+/
 
 /*
 drop table audit_table;
