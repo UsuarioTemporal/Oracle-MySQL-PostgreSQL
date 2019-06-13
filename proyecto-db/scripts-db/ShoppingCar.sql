@@ -369,13 +369,13 @@ end;
 /
 
 select * from detail;
-
+alter table audit_table modify previous_data varchar2(1000) default null;
 select * from table(authenticationUser('thomtwd@gmail.com','thom'));
 select * from audit_table;
 --trigger para la auditoria de productos
-create or replace trigger tg_detail_AU after update on detail 
+create or replace trigger trg_detail_AU after insert on detail for each row
     begin
-        insert into audit_table values(SQ_AUDIT.nextval,Sysdate,);
+        insert into audit_table values(SQ_AUDIT.nextval,Sysdate,0,'insert','detail',default,'');
     end;
     /
 

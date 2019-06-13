@@ -65,12 +65,23 @@ begin
     if inserting then
         insert into log_table values ('se hizo una inserción',user); 
     end if;
-
-    if updating then
+/*
+    if updating then -- updating('id_region')
         insert into log_table values ('se hizo una actualización',user);
+    end if;*/
+    if updating('id_region') then
+        insert into log_table values ('se hizo una actualización en id_region',user);
+    end if;
+    if updating('name_regin') then
+        insert into log_table values ('se hizo una actualización en name_region',user);
     end if;
     if deleting then
         insert into log_table values('Se hizo una elimación',user);
     end if;
 end;
 / 
+
+drop trigger trg_reg_BIUD;
+
+
+-- trigger de tipo row es que se dispara por cada fila de la operacion
