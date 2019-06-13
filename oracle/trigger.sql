@@ -46,7 +46,7 @@ begin
         raise_application_error(-20000,'solo hr puede insertar o actualizar o eliminar en la tabla regions');
     end if;
 end;
---pero imaginemos que solo queremos disparar el evento en el caso de una columna(solo es posible para los insert) 
+--pero imaginemos que solo queremos disparar el evento en el caso de una columna(solo es posible para los update) 
 create or replace trigger trg_reg_BIUD
 before insert or update of region_id delete on regions -- que este pendiente si queremos modificar el id de la tabla region
 begin
