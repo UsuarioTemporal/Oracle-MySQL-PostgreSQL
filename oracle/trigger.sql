@@ -56,3 +56,21 @@ begin
 
 end;
 /
+
+-- controlar evento
+
+create or replace trigger trg_reg_BIUD
+before insert or update of id_region delete on regions
+begin
+    if inserting then
+        insert into log_table values ('se hizo una inserción',user); 
+    end if;
+
+    if updating then
+        insert into log_table values ('se hizo una actualización',user);
+    end if;
+    if deleting then
+        insert into log_table values('Se hizo una elimación',user);
+    end if;
+end;
+/ 
