@@ -85,3 +85,23 @@ drop trigger trg_reg_BIUD;
 
 
 -- trigger de tipo row es que se dispara por cada fila de la operacion
+create or replace trigger trg_region
+before insert or update or delete 
+on regions for each row
+begin
+    if inserting then
+        :new.region_name:=upper(:new.region_name);
+        insert into log_table values ('insercion',user);
+    end if;
+    if updating('region_name') then
+        :new.region_name:=upper(:new.region_name);
+        insert into log_table values ('update',user);
+    end if;
+    if updating('region_id') then
+        insert into log_table values ('update',user);
+    end if;
+    if deleting then
+        insert into log_table values('delete',user);
+    end if;
+end;
+/
