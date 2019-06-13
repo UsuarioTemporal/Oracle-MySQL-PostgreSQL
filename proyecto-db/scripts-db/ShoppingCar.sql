@@ -372,7 +372,11 @@ select * from detail;
 alter table audit_table modify previous_data varchar2(1000) default null;
 select * from table(authenticationUser('thomtwd@gmail.com','thom'));
 select * from audit_table;
+alter table detail add user_id number not null;
+alter table detail add constraint fk_user_detail foreign key(user_id)
+references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
+
 create or replace trigger trg_detail_AU after insert on detail for each row
     begin
         insert into audit_table values(SQ_AUDIT.nextval,Sysdate,0,'insert','detail',default,'');
