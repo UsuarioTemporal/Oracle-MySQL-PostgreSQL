@@ -368,12 +368,16 @@ begin
 end;
 /
 
+select * from detail;
 
 select * from table(authenticationUser('thomtwd@gmail.com','thom'));
-         
+select * from audit_table;
 --trigger para la auditoria de productos
-create or replace trigger tg_audit_table_AU after update on audit_table for each 
-            row insert into audit_table values();
+create or replace trigger tg_detail_AU after update on detail 
+    begin
+        insert into audit_table values(SQ_AUDIT.nextval,Sysdate,);
+    end;
+    /
 
 
 /*
