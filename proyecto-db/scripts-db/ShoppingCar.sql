@@ -380,7 +380,7 @@ references user_table(user_id) on delete cascade;
 create or replace trigger trg_detail_AU before insert on detail for each row
     begin
         insert into audit_table(audit_id,audit_date,user_id,action,name_table,previous_data,new_data) 
-		values(SQ_AUDIT.nextval,Sysdate,:new.user_id,'insert','detail',default,' ');
+		values(SQ_AUDIT.nextval,Sysdate,:new.user_id,'insert','detail',default,'product_id : '||:new.product_id||', quantity:'||:new.quantity);
     end;
     /
 select * from audit_table;
