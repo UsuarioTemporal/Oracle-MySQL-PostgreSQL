@@ -376,15 +376,15 @@ alter table detail add user_id number not null;
 alter table detail add constraint fk_user_detail foreign key(user_id)
 references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
-
-create or replace trigger trg_detail_AU after insert on detail for each row
+--'product_id :'||product_id||', price :'||price||', quantity :'||quantity
+create or replace trigger trg_detail_AU before insert on detail for each row
     begin
-        insert into audit_table values(SQ_AUDIT.nextval,Sysdate,now.user_id,'insert','detail',default,
-				'product_id :'||now.product_id||', price :'||price||', quantity :'||quantity);
+        insert into audit_table(audit_id,audit_date,user_id,action,name_table,previous_data,new_data) 
+		values(SQ_AUDIT.nextval,Sysdate,:new.user_id,'insert','detail',default,' ');
     end;
     /
-
-
+select * from audit_table;
+select * from detail;
 /*
 drop table audit_table;
 drop table bill;
