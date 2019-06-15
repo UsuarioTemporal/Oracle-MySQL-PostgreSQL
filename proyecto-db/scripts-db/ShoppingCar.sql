@@ -377,7 +377,7 @@ alter table detail add constraint fk_user_detail foreign key(user_id)
 references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
 --'product_id :'||product_id||', price :'||price||', quantity :'||quantity
-create or replace trigger trg_detail_AU before insert on detail for each row
+create or replace trigger trg_detail_AI before insert on detail for each row
     begin
         insert into audit_table(audit_id,audit_date,user_id,action,name_table,previous_data,new_data) 
 		values(SQ_AUDIT.nextval,Sysdate,:new.user_id,'insert','detail',default,'product_id : '||:new.product_id||', quantity:'||:new.quantity);
@@ -385,6 +385,25 @@ create or replace trigger trg_detail_AU before insert on detail for each row
     /
 select * from audit_table;
 select * from detail;
+
+
+--funcion de comprar
+
+create or replace procedure to_buy(product in number,quantity in number,price in number,user_ in number,bill_id number)
+is
+begin
+	--
+	insert into detail values (sq_detail.nextval,bill_id,product,quantity,price,user_);
+end;
+/
+
+
+create or replace procedure invoice_generator (user_id in number)
+as
+begin
+	insert into bill values (sq_bill.nextval,user_id,default);
+end;
+/
 /*
 drop table audit_table;
 drop table bill;
