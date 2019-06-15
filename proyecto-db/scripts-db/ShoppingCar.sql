@@ -389,11 +389,24 @@ select * from detail;
 
 --funcion de comprar
 
-create or replace procedure to_buy(product in number,quantity in number,price in number,user_ in number,bill_id number)
+create or replace procedure to_buy(product_ in number,quantity_ in number,price in number,user_ in number,bill_id number)
 is
+	bill_id_result number;
+	cursor cur_val_prod is select quantity from product where product_id=product_;
+	exception no_data;
 begin
 	--
-	insert into detail values (sq_detail.nextval,bill_id,product,quantity,price,user_);
+	if cur_val_prod <quantity_ then
+		raise no_data;
+	else 
+		insert into detail values (sq_detail.nextval,bill_id,product,quantity_,price,user_);
+		
+		return;
+	end if;
+	
+	exception 
+		when no_data then
+			raise_application_error(-20010,'No hay sufuciente producto para comprar');
 end;
 /
 
