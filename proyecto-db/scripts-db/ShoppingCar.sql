@@ -401,6 +401,7 @@ begin
 	else 
 		insert into detail values (sq_detail.nextval,bill_id,product,quantity_,price,user_);
 		
+		
 		return;
 	end if;
 	
