@@ -1,0 +1,6 @@
+extends template/template
+append config
+    - pageTitle = 'About'
+    - currentPage = 'about'
+block content
+    h1= `${currentPage}`
