@@ -400,7 +400,7 @@ begin
 		raise no_data;
 	else 
 		insert into detail values (sq_detail.nextval,bill_id,product,quantity_,price,user_);
-		
+		update product set quantity=quantity-quantity_ where product_id=product_;
 		
 		return;
 	end if;
