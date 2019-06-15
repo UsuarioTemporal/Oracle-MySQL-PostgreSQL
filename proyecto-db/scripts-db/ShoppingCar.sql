@@ -393,14 +393,14 @@ create or replace procedure to_buy(product_ in number,quantity_ in number,price 
 is
 	cursor cur_val_prod is select quantity from product where product_id=product_;
 	no_data exception ;
-	cantidad number;
+	quant number;
 begin
 	--
 	
 	for data_ in cur_val_prod loop
-		cantidad:=data_.quantity;
+		quant:=data_.quantity;
 	end loop;
-	if  cantidad < quantity_ then
+	if  quant < quantity_ then
 		raise no_data;
 	else 
 		insert into detail values (sq_detail.nextval,bill_id,product_,quantity_,price,user_);
