@@ -10,6 +10,9 @@ app.set('port',process.env.PORT || 8000)
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended:false})) // esto sirve para poder aceptar los datos que me envia el usuario desde los formularios
 app.use(express.json())
+// app.use(express.static(`${__dirname}/public`))
+
+app.set('view engine','pug')
 
 // global variables
 //app.use((req,res,next)=>{
