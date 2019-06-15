@@ -418,6 +418,9 @@ begin
 	insert into bill values (sq_bill.nextval,user_id,default);
 end;
 /
+
+
+
 /*
 drop table audit_table;
 drop table bill;
@@ -431,6 +434,3 @@ drop table product;
 drop table profile;
 drop table retouching;
 */
-
-
-
