@@ -14,7 +14,7 @@ router.get('/',(req,res)=>{
 .get('/signUp',(req,res)=>{
     res.render('signUp')
 })
-.post('/login',async (req,res,next)=>{
+.post('/signIn',async (req,res,next)=>{
     const {email,pass} = req.body
     const result = await pool
     // console.log(req.body)
@@ -24,11 +24,20 @@ router.get('/',(req,res)=>{
         res.redirect('/about')
         next()
     }catch(err){
-        res.redirect('/')
-    }finally{
-       // await result.close()
+        res.redirect('/signIn')
     }
-    
+})
+.post('/signUp',(req,res)=>{
+    const {email,pass,name,patternalSurname,matternalSurname,dni,phoneNumber} = req.body
+    const result = await pool
+    try{
+        const SQL = `exec insertUser('${name}','${patternalSurname}','${matternalSurname}',)`
+        const data = await result.execute(SQL)
+        res.redirect('/signIn')
+        next()
+    }catch(err){
+        res.redirect('/signUp')
+    }
 })
 .get('/about',async (req,res)=>{
     res.render('about')
