@@ -429,6 +429,7 @@ as
 begin
 	insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
 values (SQ_user.nextval,name_user,patternal,matternal,dni,phone,email,md5Hash(password_atribute),profile_atri);
+commit;
 end;
 /
 commit;

@@ -37,6 +37,7 @@ router.get('/',(req,res)=>{
                         ,'${matternalSurname}'
                         ,'${dni}','${phoneNumber}'
                         ,'${email}','${pass}',2);
+                    COMMIT;
                     END;`;
         const data = await result.execute(SQL)
         res.redirect('/signIn')
