@@ -13,7 +13,6 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended:false})) // esto sirve para poder aceptar los datos que me envia el usuario desde los formularios
 app.use(express.json())
 app.use(express.static(`${__dirname}/public`))
-console.log(`${__dirname}/public`)
 
 
 
@@ -24,7 +23,7 @@ console.log(`${__dirname}/public`)
 //})
 
 // routes
-app.use('/',require('./routes/links'))
+app.use(require('./routes/links'))
 
 //app.use(require('./routes/authentication'))
 //app.use(require('/links','./routes/links'))

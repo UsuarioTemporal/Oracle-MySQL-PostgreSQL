@@ -7,8 +7,19 @@ const express = require('express'),
 router.get('/',(req,res)=>{
     res.render('home')
 })
-.get('/about',(req,res)=>{
-    res.render('about')
+.post('/login',async (req,res)=>{
+    const {email,pass} = req.body
+    
+    // console.log(req.body)
+    try{
+        const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
+        const result = await pool
+        const data = await result.execute(SQL)
+        res.render('about')
+    }catch(err){
+        res.redirect('/')
+    }
+    
 })
 
 
