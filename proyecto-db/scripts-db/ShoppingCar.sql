@@ -423,8 +423,15 @@ begin
 end;
 /
 
-
-
+create or replace procedure 
+insertUser(name_user varchar2,patternal varchar2,matternal varchar2,dni varchar2,phone varchar2,email varchar2,password_atribute varchar2,profile_atri number)
+as
+begin
+	insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
+values (SQ_user.nextval,name_user,patternal,matternal,dni,phone,email,md5Hash(password_atribute),profile_atri);
+end;
+/
+commit;
 /*
 drop table audit_table;
 drop table bill;

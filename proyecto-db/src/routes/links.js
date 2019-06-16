@@ -31,7 +31,7 @@ router.get('/',(req,res)=>{
     const {email,pass,name,patternalSurname,matternalSurname,dni,phoneNumber} = req.body
     const result = await pool
     try{
-        const SQL = `exec insertUser('${name}','${patternalSurname}','${matternalSurname}',)`
+        const SQL = `exec insertUser('${name}','${patternalSurname}','${matternalSurname}','${dni}','${phoneNumber}','${email}','${pass}',2)`
         const data = await result.execute(SQL)
         res.redirect('/signIn')
         next()
