@@ -6,16 +6,32 @@
     padding: 0;
     margin: 0;
 }
-.home{
+
+
+body{
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.register{
     background: #33495e;
+    align-items: center;
+}
+ul,a{
+    list-style: none;
+    text-decoration: none;
+    color: #2ecc71;
 }
 .box {
     width: 300px;
     padding: 20px;
-    position: absolute;
+    margin: auto;
+    margin-bottom: 2em;
+    /* position: absolute; */
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    /* transform: translate(-50%,-50%); */
     background: #191919;
     text-align: center;
 }
@@ -63,4 +79,13 @@
 }
 .box input[type="submit"]:hover,.box input[type="submit"]:focus{
     background: #2ecc71;
+}
+.main-footer{
+    width: 100%;
+    margin-top: auto;
+    background: #191919;
+    text-align: center;
+    padding-top: 1em;
+    color:white;
+    padding: 1em;
 }

@@ -9,10 +9,8 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
         link(rel="stylesheet", href="assets/css/styles.css")
-    body(class=`${currentPage}`)
+    body(class=`${(currentPage==='home'?'1':'register')}`)
         header.main-header
-            if currentPage==='home' 
-                include ../block/navbar
+            include ../block/navbar
         block content
-        if currentPage==='home' 
-            include ../block/footer
+        include ../block/footer
