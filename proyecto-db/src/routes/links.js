@@ -14,7 +14,7 @@ router.get('/',(req,res)=>{
 .get('/signUp',(req,res)=>{
     res.render('signUp')
 })
-.post('/signIn',async (req,res,next)=>{
+.post('/signIn',async (req,res)=>{
     const {email,pass} = req.body
     const result = await pool
     // console.log(req.body)
@@ -22,20 +22,26 @@ router.get('/',(req,res)=>{
         const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
         const data = await result.execute(SQL)
         res.redirect('/about')
-        next()
     }catch(err){
         res.redirect('/signIn')
     }
 })
-.post('/signUp',(req,res)=>{
+.post('/signUp',async (req,res)=>{
     const {email,pass,name,patternalSurname,matternalSurname,dni,phoneNumber} = req.body
+    console.log(req.body)
     const result = await pool
     try{
-        const SQL = `exec insertUser('${name}','${patternalSurname}','${matternalSurname}','${dni}','${phoneNumber}','${email}','${pass}',2)`
+        const SQL = `BEGIN 
+                    INSERTUSER('${name}'
+                        ,'${patternalSurname}'
+                        ,'${matternalSurname}'
+                        ,'${dni}','${phoneNumber}'
+                        ,'${email}','${pass}',2);
+                    END;`;
         const data = await result.execute(SQL)
         res.redirect('/signIn')
-        next()
     }catch(err){
+        console.log(err)
         res.redirect('/signUp')
     }
 })
