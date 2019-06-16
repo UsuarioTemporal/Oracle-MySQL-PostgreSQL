@@ -1,6 +1,6 @@
 *,
-*::before,
-*::after{
+*:before,
+*:after{
     box-sizing: border-box;
     font-family: sans-serif;
     padding: 0;
@@ -18,16 +18,18 @@ body{
     background: #33495e;
     align-items: center;
 }
+
 ul,a{
     list-style: none;
     text-decoration: none;
     color: #2ecc71;
 }
 .box {
+
     width: 300px;
-    padding: 20px;
-    margin: auto;
-    margin-bottom: 2em;
+    padding: 15px;
+    margin-bottom: auto;
+    margin-top: auto;
     /* position: absolute; */
     top: 50%;
     left: 50%;
@@ -88,4 +90,33 @@ ul,a{
     padding-top: 1em;
     color:white;
     padding: 1em;
+}
+.menu{
+    background: #191919;
+    padding: .5em 0;
+}
+.menu ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0 0 auto;
+}
+.menu li{
+    margin: .2em;
+    transition: all .5s;
+}
+.menu a{
+    text-transform: uppercase;
+    color:#FFF;
+    font-size: .8em;
+    line-height: 2.5;
+    display: block;
+    padding: 0 .7em;
+}
+
+.menu li:hover,
+.menu .active{
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, .3);
+    
 }
