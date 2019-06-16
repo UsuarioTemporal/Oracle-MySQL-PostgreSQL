@@ -8,7 +8,13 @@ const express = require('express'),
 router.get('/',(req,res)=>{
     res.render('home')
 })
-.post('/login',async (req,res)=>{
+.get('/signIn',(req,res)=>{
+    res.render('signIn')
+})
+.get('/signUp',(req,res)=>{
+    res.render('signUp')
+})
+.post('/login',async (req,res,next)=>{
     const {email,pass} = req.body
     const result = await pool
     // console.log(req.body)
@@ -16,7 +22,7 @@ router.get('/',(req,res)=>{
         const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
         const data = await result.execute(SQL)
         res.redirect('/about')
-        
+        next()
     }catch(err){
         res.redirect('/')
     }finally{
@@ -24,13 +30,14 @@ router.get('/',(req,res)=>{
     }
     
 })
-.get('/about',isLoggedIn,async (req,res)=>{
+.get('/about',async (req,res)=>{
     res.render('about')
 })
 
 module.exports = router
 
 /**
+ * 
  * express-session : administra las sesiones de nuestra app . será
  *  necesario para autentuificar a un usuario más tarde, una session
  *  viene a ser para guardar un dato en la memoria dek servidor

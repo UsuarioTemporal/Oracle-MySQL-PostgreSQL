@@ -11,8 +11,8 @@ html(lang="en")
         link(rel="stylesheet", href="assets/css/styles.css")
     body(class=`${currentPage}`)
         header.main-header
-            if currentPage!=='home' 
+            if currentPage==='home' 
                 include ../block/navbar
         block content
-        if currentPage!=='home' 
+        if currentPage==='home' 
             include ../block/footer
