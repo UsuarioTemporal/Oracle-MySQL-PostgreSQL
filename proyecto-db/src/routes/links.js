@@ -1,7 +1,7 @@
 const express = require('express'),
     router = express.Router(),
     // pool = require('../database')
-    pool = require('../database')
+    pool = require('../config/database')
 // pool.then(console.log).catch(console.log)
 
 router.get('/',(req,res)=>{
@@ -9,15 +9,17 @@ router.get('/',(req,res)=>{
 })
 .post('/login',async (req,res)=>{
     const {email,pass} = req.body
-    
+    const result = await pool
     // console.log(req.body)
     try{
         const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
-        const result = await pool
         const data = await result.execute(SQL)
         res.render('about')
+        
     }catch(err){
         res.redirect('/')
+    }finally{
+        await result.close()
     }
     
 })
