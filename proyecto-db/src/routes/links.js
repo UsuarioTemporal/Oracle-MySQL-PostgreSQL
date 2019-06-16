@@ -1,7 +1,8 @@
 const express = require('express'),
     router = express.Router(),
     // pool = require('../database')
-    pool = require('../config/database')
+    pool = require('../config/database'),
+    {isLoggedIn}=require('../lib/auth')
 // pool.then(console.log).catch(console.log)
 
 router.get('/',(req,res)=>{
@@ -14,16 +15,18 @@ router.get('/',(req,res)=>{
     try{
         const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
         const data = await result.execute(SQL)
-        res.render('about')
+        res.redirect('/about')
         
     }catch(err){
         res.redirect('/')
     }finally{
-        await result.close()
+       // await result.close()
     }
     
 })
-
+.get('/about',isLoggedIn,async (req,res)=>{
+    res.render('about')
+})
 
 module.exports = router
 
