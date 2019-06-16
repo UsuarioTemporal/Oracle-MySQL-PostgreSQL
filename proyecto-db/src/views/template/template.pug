@@ -8,8 +8,8 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
-        //- link(rel="stylesheet", href="../../public/")
-    body
+        link(rel="stylesheet", href="assets/css/styles.css")
+    body(class=`${currentPage}`)
         header.main-header
             include ../block/navbar
         block content

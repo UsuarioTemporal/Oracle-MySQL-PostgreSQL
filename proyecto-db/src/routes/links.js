@@ -4,6 +4,14 @@ const express = require('express'),
     pool = require('../database')
 // pool.then(console.log).catch(console.log)
 
+router.get('/',(req,res)=>{
+    res.render('home')
+})
+.get('/about',(req,res)=>{
+    res.render('about')
+})
+
+
 module.exports = router
 
 /**

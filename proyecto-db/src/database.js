@@ -17,4 +17,4 @@ const fnOracle = async ()=>{
 }
 
 module.exports = fnOracle()
-fnOracle().then(data=>print(data)).catch(err=>print(`Error de la base de datos es : ${err.message}`))
+//fnOracle().then(data=>print(data)).catch(err=>print(`Error de la base de datos es : ${err.message}`))

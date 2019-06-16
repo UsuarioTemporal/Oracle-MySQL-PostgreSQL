@@ -1,0 +1,11 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.home{
+    background: #33495e;
+}
