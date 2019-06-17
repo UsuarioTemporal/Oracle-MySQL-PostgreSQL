@@ -134,8 +134,9 @@ ul,a{
 }
 .container img{
     display: block;
+    height: 30%;
     width: 100%;
-    height: auto;
-    min-height: 500px;
+    /*height: auto;
+    min-height: 100%; */
     /* height: */
 }
