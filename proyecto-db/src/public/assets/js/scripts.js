@@ -12,6 +12,8 @@ const slider = container=> {
         }else if(target===next){
             index= index===images.length-1 ? 0: index+1
         }
-        image.src =images[index]
+        img.src =images[index]
     })
 }
+
+slider(document.querySelector('.container'))
