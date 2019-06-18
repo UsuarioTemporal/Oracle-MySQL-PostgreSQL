@@ -6,7 +6,7 @@ const slider = container=> {
             next = container.querySelector('.next'),
             img = container.querySelector('img')
             target = e.target
-        
+        if (!img) return;
         if (target===back){
             index= index===0 ? images.length-1 : index-1
         }else if(target===next){
