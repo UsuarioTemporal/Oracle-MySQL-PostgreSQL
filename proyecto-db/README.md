@@ -6,8 +6,8 @@
 
 ## **SignIn**
 
-![signIn](../img/SingIn.png)
+![signIn](../img/SignIn.png)
 
 ## **SignUp**
 
-![signUp](../img/singUp.png)
+![signUp](../img/signUp.png)
