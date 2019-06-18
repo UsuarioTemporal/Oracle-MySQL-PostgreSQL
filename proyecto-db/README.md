@@ -1,5 +1,13 @@
 # **Proyecto**
 
-## **LOGIN**
+## **HOME**
 
-![LOGIN](../img/login.png)
+![HOME](../img/home.png)
+
+## **SignIn**
+
+![signIn](../img/SingIn.png)
+
+## **SignUp**
+
+![signUp](../img/singUp.png)
