@@ -49,7 +49,7 @@ router.get('/',(req,res)=>{
 })
 .get('/profile',async (req,res)=>{
     console.log(req.query)
-    res.render('profile')
+    res.render('profile',{})
 })
 
 module.exports = router
