@@ -21,7 +21,8 @@ router.get('/',(req,res)=>{
     try{
         const SQL = `select * from table(authenticationUser('${email}','${pass}'))`
         const data = await result.execute(SQL)
-        res.redirect('/about')
+        let id = data.rows[0][0]
+        res.redirect(`/profile?id=${id}`)
     }catch(err){
         res.redirect('/signIn')
     }
@@ -46,8 +47,9 @@ router.get('/',(req,res)=>{
         res.redirect('/signUp')
     }
 })
-.get('/about',async (req,res)=>{
-    res.render('about')
+.get('/profile',async (req,res)=>{
+    console.log(req.query)
+    res.render('profile')
 })
 
 module.exports = router
