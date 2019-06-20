@@ -1,4 +1,4 @@
-let images = ['./img/img_1.jpg','./img/img_2.jpg','./img/img_3.jpg']
+let images = ['./assets/img/img_1.jpg','./assets/img/img_2.jpg','./assets/img/img_3.jpg']
 let index = 0
 const slider = container=> {
     container.addEventListener('click',e=>{

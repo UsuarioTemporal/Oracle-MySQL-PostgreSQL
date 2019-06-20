@@ -1,0 +1,10 @@
+extends template/template
+append config
+    - pageTitle = 'User'
+    - currentPage = 'user'
+block content
+    //- h1= `${currentPage}`
+    h1.title Choose a Product
+    div(class="kitchen product")
+    div(class="closet product")
+    div(class="wardrobe product")

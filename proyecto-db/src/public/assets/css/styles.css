@@ -178,7 +178,7 @@ ul,a{
     color : white;
 }
 .kitchen,.closet,.wardrobe{
-    background: red;
+    background: #191919;
     width: 300px;
     height: 200px;
     margin-bottom: 1.8em;
