@@ -5,6 +5,9 @@ append config
 block content
     //- h1= `${currentPage}`
     h1.title Choose a Product
-    div(class="kitchen product")
-    div(class="closet product")
-    div(class="wardrobe product")
+    .gallery-container
+        - let arr = ['kitchen','close','wardrobe']
+        - for(let i=0;i<3;i++)
+            .product
+                div(class=`${arr[i]}`)
+                a(href="#")= `${arr[i]}`

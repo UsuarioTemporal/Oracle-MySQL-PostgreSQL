@@ -177,10 +177,12 @@ ul,a{
     text-transform: uppercase;
     color :#D6EBFF;
 }
-.kitchen,.closet,.wardrobe{
+.product{
     background: #191919;
     width: 300px;
     height: 200px;
     margin-bottom: 1.8em;
     cursor: pointer;
+    position: relative;
+    
 }
