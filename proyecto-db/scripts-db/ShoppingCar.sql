@@ -194,7 +194,7 @@ commit;
 
 --ingresando color
 insert into color values(SQ_COLOR.nextval,'blanco','blanco');
-insert into color values(SQ_COLOR.nextval,'color','blanco');
+insert into color values(SQ_COLOR.nextval,'blanco','color');
 
 
 
