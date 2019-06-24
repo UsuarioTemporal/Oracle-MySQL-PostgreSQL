@@ -1,36 +1,42 @@
 -- TABLAS INDEPENDIENTES
-create table profile(
+create table profile
+(
     profile_id number primary key not null,
     profile_name varchar2(20) not null,
     constraint uk_profile_name UNIQUE(profile_name)
 );
 
 
-CREATE TABLE CATEGORY(
+CREATE TABLE CATEGORY
+(
     category_id INTEGER,
     NAME VARCHAR2(50) NOT NULL,
     PRIMARY KEY(category_id)
 );
 
-CREATE TABLE TYPE_OF_MEASURE(
+CREATE TABLE TYPE_OF_MEASURE
+(
     measure_id INTEGER,
     name VARCHAR2(2) NOT NULL,
     PRIMARY KEY (measure_id)
 );
 
-CREATE TABLE COLOR(
+CREATE TABLE COLOR
+(
     color_id integer primary key,
     internal_color varchar2(50),
     external_color varchar2(50)
 );
 
-create table canto(
+create table canto
+(
     canto_id integer primary key,
     name varchar2(20) not null
 );
 
 -- TABLAS DEPENDIENTES
-create table user_table(
+create table user_table
+(
     user_id number,
     name VARCHAR2(50) NOT NULL,
     paternal_surname VARCHAR2(50) NOT NULL,
@@ -43,7 +49,8 @@ create table user_table(
 alter table user_table add constraint pk_user_id PRIMARY KEY(user_id);
 alter table user_table add password varchar2(100) not null;
 
-CREATE TABLE RETOUCHING(
+CREATE TABLE RETOUCHING
+(
     retouching_id INTEGER PRIMARY KEY,
     canto_id integer,
     color_id integer,
@@ -53,7 +60,8 @@ CREATE TABLE RETOUCHING(
     foreign key (canto_id) references canto(canto_id) on delete cascade
 );
 
-create table product(
+create table product
+(
     product_id integer primary key,
     name varchar2(50) not null,
     price number(6,2) check(price>0),
@@ -93,7 +101,8 @@ Cuando se pueden producir errores en los datos ?
 *
 */
 
-create table bill(
+create table bill
+(
     bill_id integer primary key,
     user_id integer,
     bill_date date ,
@@ -101,7 +110,8 @@ create table bill(
     references user_table(user_id) on delete cascade
 );
 
-create table detail(
+create table detail
+(
     detail_id integer primary key,
     bill_id integer,
     product_id integer,
@@ -118,15 +128,23 @@ create table detail(
 set SERVEROUTPUT on
 create or replace procedure creative_of_sequences
 as
-    type type_sq_array is varray(11) of varchar2(11);
+    type type_sq_array is varray
+(11) of varchar2
+(11);
     sq_array type_sq_array;
     length_ integer;
 begin
-    sq_array:=type_sq_array('product','detail','user','category','bill','retouching','MEASURE','color','canto','audit','profile');
-    length_:=sq_array.count;
+    sq_array:
+    =type_sq_array
+    ('product','detail','user','category','bill','retouching','MEASURE','color','canto','audit','profile');
+length_:
+=sq_array.count;
     for sq_name in 1..length_ loop
-        execute immediate 'CREATE SEQUENCE sq_'||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
-    end loop;
+execute immediate 'CREATE SEQUENCE sq_'
+||to_char
+(sq_array
+(sq_name))||' start with 1 increment by 1 NOCYCLE';
+end loop;
 end;
 /
 
@@ -139,9 +157,10 @@ alter table bill modify bill_date date default sysdate not null;
 
 --- creando la tabla auditoria
 
-create table audit_table(
+create table audit_table
+(
     audit_id NUMBER primary key,
-    audit_date TIMESTAMP  DEFAULT SYSDATE NOT NULL,
+    audit_date TIMESTAMP DEFAULT SYSDATE NOT NULL,
     user_id NUMBER,
     action VARCHAR2(20) NOT NULL,
     name_table VARCHAR2(20) NOT NULL,
@@ -150,8 +169,10 @@ create table audit_table(
     constraint fk_user_audit foreign key (user_id) 
     references user_table(user_id) on delete cascade
 );
-select * from audit_table;
-create table mode_product(
+select *
+from audit_table;
+create table mode_product
+(
     mode_id number primary key not null,
     name_mode varchar2(1) unique not null
 );
@@ -166,105 +187,371 @@ alter table user_table add constraint fk_profile_user
 foreign key(profile_id) references profile(profile_id) on delete cascade;
 
 
-insert into profile values (sq_profile.nextval,'Administrador');
+insert into profile
+values
+    (sq_profile.nextval, 'Administrador');
 
-insert into profile values (sq_profile.nextval,'cliente');
+insert into profile
+values
+    (sq_profile.nextval, 'cliente');
 
-select * from profile;
+select *
+from profile;
 
 --funcion para encriptar la contrase�a 
-create or replace function md5Hash(input_string in varchar2) return varchar2 is
+create or replace function md5Hash
+(input_string in varchar2)
+return varchar2
+is
 begin
-    return DBMS_OBFUSCATION_TOOLKIT.md5 (input => UTL_RAW.cast_to_raw(input_string));
+    return DBMS_OBFUSCATION_TOOLKIT.md5 (input
+    => UTL_RAW.cast_to_raw
+    (input_string));
 end;
 /
 SELECT md5Hash('thom') md5_val
-  FROM DUAL;
+FROM DUAL;
 
-insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
-values (SQ_user.nextval,'Thom','Roman','Aguilar','72847964','987654321','thomtwd@gmail.com',md5Hash('thom'),1);
+insert into user_table
+    (user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id)
+values
+    (SQ_user.nextval, 'Thom', 'Roman', 'Aguilar', '72847964', '987654321', 'thomtwd@gmail.com', md5Hash('thom'), 1);
 
-insert into user_table(user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id) 
-values (SQ_user.nextval,'Erick','Huaranca','Rivas','78654321','944121369','erick@gmail.com',md5Hash('chavo'),2);
+insert into user_table
+    (user_id,name,paternal_surname,maternal_surname,dni,phone_number,email,password,profile_id)
+values
+    (SQ_user.nextval, 'Erick', 'Huaranca', 'Rivas', '78654321', '944121369', 'erick@gmail.com', md5Hash('chavo'), 2);
 
-select * from user_table;
+select *
+from user_table;
 --select * from v$version;
 
 commit;
 
 --ingresando color
-insert into color values(SQ_COLOR.nextval,'blanco','blanco');
-insert into color values(SQ_COLOR.nextval,'blanco','color');
+insert into color
+values(SQ_COLOR.nextval, 'blanco', 'blanco');
+insert into color
+values(SQ_COLOR.nextval, 'blanco', 'color');
 
 
 
 --ingresando canto
-insert into canto values(SQ_CANTO.nextval,'delgado');
-insert into canto values(SQ_CANTO.nextval,'grueso');
-insert into canto values(SQ_CANTO.nextval,'T alumnio');
+insert into canto
+values(SQ_CANTO.nextval, 'delgado');
+insert into canto
+values(SQ_CANTO.nextval, 'grueso');
+insert into canto
+values(SQ_CANTO.nextval, 'T alumnio');
 
 --ingresando retouching
-insert into retouching values(SQ_RETOUCHING.nextval,1,1);
-insert into retouching values(SQ_RETOUCHING.nextval,2,1);
-insert into retouching values(SQ_RETOUCHING.nextval,3,1);
-insert into retouching values(SQ_RETOUCHING.nextval,1,2);
-insert into retouching values(SQ_RETOUCHING.nextval,2,2);
-insert into retouching values(SQ_RETOUCHING.nextval,3,2);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 1, 1);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 2, 1);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 3, 1);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 1, 2);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 2, 2);
+insert into retouching
+values(SQ_RETOUCHING.nextval, 3, 2);
 
 commit ;
 -- ingresnado dimensiones
-insert into type_of_measure values(SQ_MEASURE.nextval,'ML');
-insert into type_of_measure values(SQ_MEASURE.nextval,'M3');
+insert into type_of_measure
+values(SQ_MEASURE.nextval, 'ML');
+insert into type_of_measure
+values(SQ_MEASURE.nextval, 'M3');
 
 
 -- ingresando categoria
-insert into category values(SQ_CATEGORY.nextval,'sin puertas');
-insert into category values(SQ_CATEGORY.nextval,'puertas batientes');
-insert into category values(SQ_CATEGORY.nextval,'puertas corredizas');
-insert into category values(SQ_CATEGORY.nextval,'parte alta');
-insert into category values(SQ_CATEGORY.nextval,'parte baja');
-insert into category values(SQ_CATEGORY.nextval,'torre');
+insert into category
+values(SQ_CATEGORY.nextval, 'sin puertas');
+insert into category
+values(SQ_CATEGORY.nextval, 'puertas batientes');
+insert into category
+values(SQ_CATEGORY.nextval, 'puertas corredizas');
+insert into category
+values(SQ_CATEGORY.nextval, 'parte alta');
+insert into category
+values(SQ_CATEGORY.nextval, 'parte baja');
+insert into category
+values(SQ_CATEGORY.nextval, 'torre');
 
-insert into mode_product values(1,'A');
-insert into mode_product values(2,'B');
-insert into mode_product values(3,'Z');
+insert into mode_product
+values(1, 'A');
+insert into mode_product
+values(2, 'B');
+insert into mode_product
+values(3, 'Z');
 
-select * from RETOUCHING;
-select * from canto;
-select * from color;
-select * from category;
-select * from type_of_measure;
-select * from moisture_resistant;
-select * from mode_product;
-select * from product;
+select *
+from RETOUCHING;
+select *
+from canto;
+select *
+from color;
+select *
+from category;
+select *
+from type_of_measure;
+select *
+from moisture_resistant;
+select *
+from mode_product;
+select *
+from product;
 -- ingresando productos
 commit;
-insert into product values (sq_product.nextval,'cocina',350,1,4,1,20,20,20,10000,0,1);
-insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,10000,0,2);
-insert into product values (sq_product.nextval,'cocina',140,1,4,1,20,20,20,10000,0,3);
-
-insert into product values (sq_product.nextval,'cocina',1562.50,1,4,2,20,20,20,10000,0,1);
-insert into product values (sq_product.nextval,'cocina',1517.86,1,4,2,20,20,20,10000,0,2);
-insert into product values (sq_product.nextval,'cocina',1473.21,1,4,2,20,20,20,10000,0,3);
-
-select * from product;
+--COCINA
+-- Parte Alta
+-- En milimetros
+insert into product
+values
+    (sq_product.nextval, 'cocina', 350.00, 1, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 340.00, 1, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 330.00, 1, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 370.00, 3, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 360.00, 3, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 350.00, 3, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 4, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 380.00, 4, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 370.00, 4, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 370.00, 5, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 360.00, 5, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 350.00, 5, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 2, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 380.00, 2, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 370.00, 2, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 410.00, 6, 4, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 400.00, 6, 4, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 6, 4, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 1, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 380.00, 1, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 370.00, 1, 4, 1, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 410.00, 3, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 400.00, 3, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 3, 4, 1, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 430.00, 4, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 420.00, 4, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 410.00, 4, 4, 1, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 410.00, 5, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 400.00, 5, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 390.00, 5, 4, 1, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 430.00, 2, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 420.00, 2, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 410.00, 2, 4, 1, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 450.00, 6, 4, 1, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 440.00, 6, 4, 1, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 430.00, 6, 4, 1, 20, 20, 20, 10000, 1, 3);
+-- En metros cúbicos
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1562.50, 1, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1517.86, 1, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1473.21, 1, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1651.79, 3, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1607.14, 3, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1562.50, 3, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 4, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1696.43, 4, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1651.79, 4, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1651.79, 5, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1607.14, 5, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1562.50, 5, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 2, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1696.43, 2, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1651.79, 2, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1830.36, 6, 4, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1785.71, 6, 4, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 6, 4, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 1, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1696.43, 1, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1651.79, 1, 4, 2, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1830.36, 3, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1785.71, 3, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 3, 4, 2, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1919.64, 4, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1875.00, 4, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1830.36, 4, 4, 2, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1830.36, 5, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1785.71, 5, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1741.07, 5, 4, 2, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1919.64, 2, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1875.00, 2, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1830.36, 2, 4, 2, 20, 20, 20, 10000, 1, 3);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 2008.93, 6, 4, 2, 20, 20, 20, 10000, 1, 1);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1964.29, 6, 4, 2, 20, 20, 20, 10000, 1, 2);
+insert into product
+values
+    (sq_product.nextval, 'cocina', 1919.64, 6, 4, 2, 20, 20, 20, 10000, 1, 3);
+commit;
+select *
+from product;
 
 declare
     cur_prod product%rowtype;
 begin
-    select * into cur_prod from product where product_id=1;
-    --return cur_prod;
-    --DBMS_OUTPUT.put_line(cur_prod.product_id);
+    select *
+    into cur_prod
+    from product
+    where product_id=1;
+--return cur_prod;
+--DBMS_OUTPUT.put_line(cur_prod.product_id);
 end;
 /
 set serveroutput on
 DECLARE
-    CURSOR nombre_cursor IS SELECT * FROM product;
-    -- empleados employees%ROWTYPE;
+    CURSOR nombre_cursor IS
+SELECT *
+FROM product;
+-- empleados employees%ROWTYPE;
 BEGIN
     FOR emp in nombre_cursor LOOP
-        DBMS_OUTPUT.PUT_LINE(emp.name);
-    END LOOP;
+        DBMS_OUTPUT.PUT_LINE
+    (emp.name);
+END
+LOOP;
 END;
 /
 
@@ -275,17 +562,24 @@ return SYS_REFCURSOR
 AS
     my_cursor SYS_REFCURSOR;
 BEGIN
-    OPEN my_cursor FOR SELECT * FROM product;
+    OPEN my_cursor
+    FOR
+    SELECT *
+    FROM product;
     return my_cursor;
-END fn_get_proudcts;
+END
+fn_get_proudcts;
 /
-select * from product;
+select *
+from product;
 create or replace type product_type
 as OBJECT
 (
     product_id number,
-    name varchar2(50),
-    price number(6,2),
+    name varchar2
+(50),
+    price number
+(6,2),
     retouching_id number,
     category_id number,
     measure_id number,
@@ -304,8 +598,13 @@ return product_table_type
 pipelined
 as
 begin
-    for v_rec in (select * from product) loop
-        pipe row (product_type(v_rec.product_id ,
+    for v_rec in
+    (select *
+    from product)
+    loop
+        pipe row
+    (product_type
+    (v_rec.product_id ,
                                 v_rec.name,
                                 v_rec.price,
                                 v_rec.retouching_id,
@@ -316,110 +615,154 @@ begin
                                 v_rec.quantity,
                                 v_rec.moisture_resistant,v_rec.mode_id
                                 ));
-    end loop;
-    return;
+end
+loop;
+return;
 end;
 /
 
-select * from table(fn_get_product_table());
+select *
+from table(fn_get_product_table());
 
 -- funcion para autenticar al usuario
 
-select * from user_table;
+select *
+from user_table;
 create or replace type user_type
 as OBJECT
 (
     user_id number,
-    name_n varchar2(50),
-    profile_id number(6,2),
-    profile_name varchar2(50)
+    name_n varchar2
+(50),
+    profile_id number
+(6,2),
+    profile_name varchar2
+(50)
 );
 
 create or replace type user_table_type
-as table of user_type;    
+as table of user_type;
 
-create or replace function authenticationUser(email_input in varchar2,pass in varchar2) return user_table_type
+create or replace function authenticationUser
+(email_input in varchar2,pass in varchar2)
+return user_table_type
 pipelined
 as
-    cursor cur_user is select us.user_id,us.name,pro.profile_id,pro.profile_name from user_table us , profile pro 
-    where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
-    count_users number:=-1;
+    cursor cur_user is
+select us.user_id, us.name, pro.profile_id, pro.profile_name
+from user_table us , profile pro
+where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
+count_users
+number:
+=-1;
     many_users exception;
     no_user exception;
 begin
-        for data_use in cur_user loop
-            count_users:=count_users+1;
-            if count_users>1 then
-                raise many_users; 
-            end if;
-            pipe row (user_type( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
-        end loop;
-        if count_users=-1 then
+    for data_use in cur_user loop
+    count_users:
+    =count_users+1;
+    if count_users>1 then
+                raise many_users;
+end
+if;
+            pipe row
+(user_type
+( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
+end loop;
+if count_users=-1 then
             raise no_user;
         else
             return;
-        end if;
+end
+if;
         exception 
             when no_user then
-                Raise_application_error(-20010,'Usuario Incorrecto o contraseña incorrecta');
+                Raise_application_error
+(-20010,'Usuario Incorrecto o contraseña incorrecta');
             when many_users then 
-                Raise_application_error(-20010,'base de datos fallando');
-       
+                Raise_application_error
+(-20010,'base de datos fallando');
+
 end;
 /
 
-select * from detail;
-alter table audit_table modify previous_data varchar2(1000) default null;
-select * from table(authenticationUser('thomtwd@gmail.com','thom'));
-select * from audit_table;
+select *
+from detail;
+alter table audit_table modify previous_data varchar2
+(1000) default null;
+select *
+from table(authenticationUser('thomtwd@gmail.com','thom'));
+select *
+from audit_table;
 alter table detail add user_id number not null;
 alter table detail add constraint fk_user_detail foreign key(user_id)
 references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
 --'product_id :'||product_id||', price :'||price||', quantity :'||quantity
-create or replace trigger trg_detail_AI before insert on detail for each row
-    begin
-        insert into audit_table(audit_id,audit_date,user_id,action,name_table,previous_data,new_data) 
-		values(SQ_AUDIT.nextval,Sysdate,:new.user_id,'insert','detail',default,'product_id : '||:new.product_id||', quantity:'||:new.quantity);
-    end;
-    /
-select * from audit_table;
-select * from detail;
+create or replace trigger trg_detail_AI before
+insert on
+detail
+for
+each
+row
+begin
+    insert into audit_table
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data)
+    values(SQ_AUDIT.nextval, Sysdate, :new.user_id, 'insert', 'detail', default, 'product_id : '||:new.product_id||', quantity:'||:new.quantity);
+end;
+/
+select *
+from audit_table;
+select *
+from detail;
 
 
 --funcion de comprar
 
-create or replace procedure to_buy(product_ in number,quantity_ in number,price in number,user_ in number,bill_id number)
+create or replace procedure to_buy
+(product_ in number,quantity_ in number,price in number,user_ in number,bill_id number)
 is
-	cursor cur_val_prod is select quantity from product where product_id=product_;
-	no_data exception ;
+	cursor cur_val_prod is
+select quantity
+from product
+where product_id=product_;
+no_data exception ;
 	quant number;
 begin
-	--
-	
-	for data_ in cur_val_prod loop
-		quant:=data_.quantity;
-	end loop;
-	if  quant < quantity_ then
+    --
+
+    for data_ in cur_val_prod loop
+    quant:
+    =data_.quantity;
+end
+loop;
+if  quant < quantity_ then
 		raise no_data;
 	else 
-		insert into detail values (sq_detail.nextval,bill_id,product_,quantity_,price,user_);
-		update product set quantity=quantity-quantity_ where product_id=product_;
-		
-		return;
-	end if;
+		insert into detail
+values
+    (sq_detail.nextval, bill_id, product_, quantity_, price, user_);
+update product set quantity=quantity-quantity_ where product_id=product_;
+
+return;
+end
+if;
 	
 	exception 
 		when no_data then
-			raise_application_error(-20010,'No hay sufuciente producto para comprar');
+			raise_application_error
+(-20010,'No hay sufuciente producto para comprar');
 end;
 /
 
 
-create or replace procedure invoice_generator (user_id in number)
+create or replace procedure invoice_generator
+(user_id in number)
 as
 begin
-	insert into bill values (sq_bill.nextval,user_id,default);
+    insert into bill
+    values
+        (sq_bill.nextval, user_id, default);
 end;
 /
 
