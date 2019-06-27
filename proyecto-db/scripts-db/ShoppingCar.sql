@@ -235,7 +235,6 @@ insert into color
 values(SQ_COLOR.nextval, 'blanco', 'color');
 
 
-
 --ingresando canto
 insert into canto
 values(SQ_CANTO.nextval, 'delgado');
