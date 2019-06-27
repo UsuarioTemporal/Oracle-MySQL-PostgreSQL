@@ -994,6 +994,49 @@ commit;
 end;
 /
 commit;
+
+
+create or replace procedure insert_color (internal_c in varchar2,external_c in varchar2)
+as
+begin
+	insert into color
+	values(SQ_COLOR.nextval, internal_c,external_c);
+end;
+/
+
+create or replace procedure update_color(color_i in number,internal_c in varchar2,external_c in varchar2)
+as
+begin
+	update color set internal_color=internal_c, external_color = external_c where color_id= color_i;
+end;
+/
+create or replace procedure delete_color(color_i in number)
+as
+begin
+	delete from color where color_id=color_i;
+end;
+/
+
+create or replace procedure insert_profile(profile_n in varchar2)
+as
+begin
+	insert into profile values(SQ_PROFILE.nextval,profile_n);
+end;
+/
+create or replace procedure update_profile(profile_i in number,profile_n in varchar2)
+as
+begin
+	update profile set profile_name = profile_n where profile_id = profile_i;
+end;
+/
+
+create or replace procedure delete_profile(profile_i in number)
+as
+begin
+	delete from profile where profile_id = profile_i;
+end;
+/
+commit;
 /*
 drop table audit_table;
 drop table bill;
