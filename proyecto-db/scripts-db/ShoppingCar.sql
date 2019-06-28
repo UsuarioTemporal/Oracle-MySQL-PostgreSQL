@@ -1037,6 +1037,80 @@ insert into product
 values(sq_product.nextval, 'ropero', 1170.00, 2, 3, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values(sq_product.nextval, 'ropero', 1120.00, 2, 3, 1, 20, 20, 20, 10000, 0, 3);
+-- metro cúbico
+insert into product
+values(sq_product.nextval, 'ropero', 655.30, 1, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 617.42, 1, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 579.55, 1, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 734.85, 5, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 696.97, 5, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 650.09, 5, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 693.18, 3, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 655.30, 3, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 617.42, 3, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 772.73, 2, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 734.85, 2, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 696.97, 2, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 731.06, 1, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 693.18, 1, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 655.30, 1, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 810.61, 5, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 772.73, 5, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 734.85, 5, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 768.94, 3, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 731.06, 3, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 693.18, 3, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 848.48, 2, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 810.61, 2, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 772.73, 2, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 806.82, 1, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 768.94, 1, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 731.06, 1, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 886.36, 5, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 848.48, 5, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 810.61, 5, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 844.70, 3, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 806.82, 3, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 768.94, 3, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 924.24, 2, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 886.36, 2, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 848.48, 2, 3, 2, 20, 20, 20, 10000, 0, 3);
+
 commit;
 select *
 from product;
