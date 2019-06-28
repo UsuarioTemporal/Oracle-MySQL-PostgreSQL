@@ -963,6 +963,32 @@ values
 insert into product
 values
     (sq_product.nextval, 'cocina', 864.45, 6, 6, 2, 20, 20, 20, 10000, 1, 3);
+-- Ropero
+-- Milímetros  
+insert into product
+values(sq_product.nextval, 'ropero', 865.00, 1, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 815.00, 1, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 765.00, 1, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 970.00, 5, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 920.00, 5, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 870.00, 5, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 915.00, 3, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 865.00, 3, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 815.00, 3, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'ropero', 1020.00, 2, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'ropero', 970.00, 2, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'ropero', 920.00, 2, 1, 1, 20, 20, 20, 10000, 0, 3);
 commit;
 select *
 from product;
