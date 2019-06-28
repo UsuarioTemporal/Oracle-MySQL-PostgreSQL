@@ -748,221 +748,221 @@ values
 -- En milimetros
 insert into product
 values
-    (sq_product.nextval, 'cocina', 925.00, 1, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 925.00, 1, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 907.50, 1, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 907.50, 1, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 890.00, 1, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 890.00, 1, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 960.00, 3, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 960.00, 3, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 942.50, 3, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 942.50, 3, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 925.00, 3, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 925.00, 3, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 4, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 995.00, 4, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 977.50, 4, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 977.50, 4, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 960.00, 4, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 960.00, 4, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 960.00, 5, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 960.00, 5, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 942.50, 5, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 942.50, 5, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 925.00, 5, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 925.00, 5, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 2, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 995.00, 2, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 977.50, 2, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 977.50, 2, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 960.00, 2, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 960.00, 2, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1030.00, 6, 5, 1, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 1030.00, 6, 6, 1, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1012.50, 6, 5, 1, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 1012.50, 6, 6, 1, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 6, 5, 1, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 995.00, 6, 6, 1, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 1, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 995.00, 1, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 977.50, 1, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 977.50, 1, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 960.00, 1, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 960.00, 1, 6, 1, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1030.00, 3, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 1030.00, 3, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1012.50, 3, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 1012.50, 3, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 3, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 995.00, 3, 6, 1, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1065.00, 4, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 1065.00, 4, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1047.50, 4, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 1047.50, 4, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1030.00, 4, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 1030.00, 4, 6, 1, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1030.00, 5, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 1030.00, 5, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1012.50, 5, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 1012.50, 5, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 995.00, 5, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 995.00, 5, 6, 1, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1065.00, 2, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 1065.00, 2, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1047.50, 2, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 1047.50, 2, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1030.00, 2, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 1030.00, 2, 6, 1, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1100.00, 6, 5, 1, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 1100.00, 6, 6, 1, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1082.50, 6, 5, 1, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 1082.50, 6, 6, 1, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 1065.00, 6, 5, 1, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 1065.00, 6, 6, 1, 20, 20, 20, 10000, 1, 3);
 -- En metros cúbicos
 insert into product
 values
-    (sq_product.nextval, 'cocina', 750.81, 1, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 750.81, 1, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 736.51, 1, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 736.51, 1, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 722.40, 1, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 722.40, 1, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 779.22, 3, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 779.22, 3, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 765.02, 3, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 765.02, 3, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 750.81, 3, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 750.81, 3, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 4, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 807.63, 4, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 793.43, 4, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 793.43, 4, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 779.22, 4, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 779.22, 4, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 779.22, 5, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 779.22, 5, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 765.02, 5, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 765.02, 5, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 750.81, 5, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 750.81, 5, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 2, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 807.63, 2, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 793.43, 2, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 793.43, 2, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 779.22, 2, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 779.22, 2, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 836.04, 6, 5, 2, 20, 20, 20, 10000, 0, 1);
+    (sq_product.nextval, 'cocina', 836.04, 6, 6, 2, 20, 20, 20, 10000, 0, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 821.83, 6, 5, 2, 20, 20, 20, 10000, 0, 2);
+    (sq_product.nextval, 'cocina', 821.83, 6, 6, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 6, 5, 2, 20, 20, 20, 10000, 0, 3);
+    (sq_product.nextval, 'cocina', 807.63, 6, 6, 2, 20, 20, 20, 10000, 0, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 1, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 807.63, 1, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 793.43, 1, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 793.43, 1, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 779.22, 1, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 779.22, 1, 6, 2, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 836.04, 3, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 836.04, 3, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 821.83, 3, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 821.83, 3, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 3, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 807.63, 3, 6, 2, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 864.45, 4, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 864.45, 4, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 850.24, 4, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 850.24, 4, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 836.04, 4, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 836.04, 4, 6, 2, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 836.04, 5, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 836.04, 5, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 821.83, 5, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 821.83, 5, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 807.63, 5, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 807.63, 5, 6, 2, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 864.45, 2, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 864.45, 2, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 850.24, 2, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 850.24, 2, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 836.04, 2, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 836.04, 2, 6, 2, 20, 20, 20, 10000, 1, 3);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 892.86, 6, 5, 2, 20, 20, 20, 10000, 1, 1);
+    (sq_product.nextval, 'cocina', 892.86, 6, 6, 2, 20, 20, 20, 10000, 1, 1);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 878.65, 6, 5, 2, 20, 20, 20, 10000, 1, 2);
+    (sq_product.nextval, 'cocina', 878.65, 6, 6, 2, 20, 20, 20, 10000, 1, 2);
 insert into product
 values
-    (sq_product.nextval, 'cocina', 864.45, 6, 5, 2, 20, 20, 20, 10000, 1, 3);
+    (sq_product.nextval, 'cocina', 864.45, 6, 6, 2, 20, 20, 20, 10000, 1, 3);
 commit;
 select *
 from product;
