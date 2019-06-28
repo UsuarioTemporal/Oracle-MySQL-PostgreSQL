@@ -1110,7 +1110,153 @@ insert into product
 values(sq_product.nextval, 'ropero', 886.36, 2, 3, 2, 20, 20, 20, 10000, 0, 2);
 insert into product
 values(sq_product.nextval, 'ropero', 848.48, 2, 3, 2, 20, 20, 20, 10000, 0, 3);
-
+-- Closet
+-- Milímetros  
+insert into product
+values(sq_product.nextval, 'closet', 785.00, 1, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 735.00, 1, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 685.00, 1, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 890.00, 5, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 840.00, 5, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 790.00, 5, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 835.00, 3, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 785.00, 3, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 735.00, 3, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 940.00, 2, 1, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 890.00, 2, 1, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 840.00, 2, 1, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 885.00, 1, 2, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 835.00, 1, 2, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 785.00, 1, 2, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 990.00, 5, 2, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 940.00, 5, 2, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 890.00, 5, 2, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 935.00, 3, 2, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 885.00, 3, 2, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 835.00, 3, 2, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 1040.00, 2, 2, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 990.00, 2, 2, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 940.00, 2, 2, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 985.00, 1, 3, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 935.00, 1, 3, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 885.00, 1, 3, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 1090.00, 5, 3, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 1040.00, 5, 3, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 990.00, 5, 3, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 1035.00, 3, 3, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 985.00, 3, 3, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 935.00, 3, 3, 1, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 1140.00, 2, 3, 1, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 1090.00, 2, 3, 1, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 1040.00, 2, 3, 1, 20, 20, 20, 10000, 0, 3);
+-- metro cúbico 
+insert into product
+values(sq_product.nextval, 'closet', 594.70, 1, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 556.82, 1, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 518.94, 1, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 674.24, 5, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 636.36, 5, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 598.48, 5, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 632.58, 3, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 594.70, 3, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 556.82, 3, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 712.12, 2, 1, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 674.24, 2, 1, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 636.36, 2, 1, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 670.45, 1, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 632.58, 1, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 594.70, 1, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 750.00, 5, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 712.12, 5, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 674.24, 5, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 708.33, 3, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 670.45, 3, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 632.58, 3, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 787.88, 2, 2, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 750.00, 2, 2, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 712.12, 2, 2, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 746.21, 1, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 708.33, 1, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 670.45, 1, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 825.76, 5, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 787.88, 5, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 750.00, 5, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 784.09, 3, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 746.21, 3, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 708.33, 3, 3, 2, 20, 20, 20, 10000, 0, 3);
+insert into product
+values(sq_product.nextval, 'closet', 863.64, 2, 3, 2, 20, 20, 20, 10000, 0, 1);
+insert into product
+values(sq_product.nextval, 'closet', 825.76, 2, 3, 2, 20, 20, 20, 10000, 0, 2);
+insert into product
+values(sq_product.nextval, 'closet', 787.88, 2, 3, 2, 20, 20, 20, 10000, 0, 3);
 commit;
 select *
 from product;
