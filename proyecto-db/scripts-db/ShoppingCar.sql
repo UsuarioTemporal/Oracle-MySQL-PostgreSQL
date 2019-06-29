@@ -1550,6 +1550,29 @@ begin
 end;
 /
 commit;
+
+
+create or replace procedure insert_category (category_name in varchar2)
+as
+begin
+	insert into category values (sq_category.nextval,category_name);
+end;
+/
+
+create or replace procedure update_category(category_i in number,category_name in varchar2)
+as
+begin
+	update category set name = category_name where category_id = category_i;
+end;
+/
+
+create or replace procedure delete_category(category_i in number)
+as
+begin
+	delete from category where category_id = category_i;
+end;
+/
+commit;
 /*
 drop table audit_table;
 drop table bill;
