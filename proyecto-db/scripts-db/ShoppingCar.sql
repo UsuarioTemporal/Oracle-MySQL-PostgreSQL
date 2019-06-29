@@ -1430,16 +1430,21 @@ alter table detail add constraint fk_user_detail foreign key(user_id)
 references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
 --'product_id :'||product_id||', price :'||price||', quantity :'||quantity
-create or replace trigger trg_detail_AI before
+create or replace trigger trg_detail_BI before
 insert on
 detail
 for
 each
 row
+declare
+	name_ur varchar2(100);
+	name_i number;
 begin
+	name_i := :new.user_id;
+	select name into name_ur from user_table where user_id = name_i;
     insert into audit_table
-        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data)
-    values(SQ_AUDIT.nextval, Sysdate, :new.user_id, 'insert', 'detail', default, 'product_id : '||:new.product_id||', quantity:'||:new.quantity);
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
+    values(SQ_AUDIT.nextval, Sysdate,name_i , 'insert', 'detail', ' ', 'product_id : '||:new.product_id||', quantity:'||:new.quantity,name_ur);
 end;
 /
 select *
@@ -1573,6 +1578,93 @@ begin
 end;
 /
 commit;
+
+
+create or replace trigger trg_color_BIUD before
+insert or update or delete on 
+color
+for
+each
+row
+declare 
+	action_ varchar2(100);
+	string_action_next varchar2(1000);
+	string_action_pre varchar2(1000):=' ';
+begin
+	IF INSERTING THEN
+		action_:='insert';
+	elsif updating then
+		action_:='update';
+		string_action_pre:='old color : '||:old.color_id||',i/e = '||:old.internal_color ||'/' ||:old.external_color;
+	elsif deleting then
+		action_ :='delete';
+		string_action_pre:='old color : '||:old.color_id||',i/e = '||:old.internal_color ||'/' ||:old.external_color;
+	end if;
+	string_action_next:='new color : '||:new.color_id||',i/e = '||:new.internal_color ||'/' ||:new.external_color;
+    insert into audit_table
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
+    values(SQ_AUDIT.nextval, Sysdate,1,action_, 'color', string_action_pre,string_action_next,user);
+end;
+/
+exec insert_color('otrointerno','otroexterno');
+exec update_color(6,'adentro','afuera');
+exec delete_color(6);
+commit;
+
+create or replace trigger trg_profile_BIUD before
+insert or update or delete on 
+profile
+for
+each
+row
+declare 
+	action_ varchar2(100);
+	string_action_next varchar2(1000);
+	string_action_pre varchar2(1000):=' ';
+begin
+	IF INSERTING THEN
+		action_:='insert';
+	elsif updating then
+		action_:='update';
+		string_action_pre:='old profile : '||:old.profile_id||', name ='||:old.profile_name;
+	elsif deleting then
+		action_ :='delete';
+		string_action_pre:='old profile : '||:old.profile_id||', name : '||:old.profile_name;
+	end if;
+	string_action_next:='new profile : '||:new.profile_id||', name :'||:old.profile_name;
+    insert into audit_table
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
+    values(SQ_AUDIT.nextval, Sysdate,1,action_, 'profile', string_action_pre,string_action_next,user);
+end;
+/
+
+create or replace trigger trg_category_BIUD before
+insert or update or delete on 
+category
+for
+each
+row
+declare 
+	action_ varchar2(100);
+	string_action_next varchar2(1000);
+	string_action_pre varchar2(1000):=' ';
+begin
+	IF INSERTING THEN
+		action_:='insert';
+	elsif updating then
+		action_:='update';
+		string_action_pre:='old category : '||:old.category_id||', name ='||:old.name;
+	elsif deleting then
+		action_ :='delete';
+		string_action_pre:='old category : '||:old.category_id||', name : '||:old.name;
+	end if;
+	string_action_next:='new category : '||:new.category_id||', name :'||:old.name;
+    insert into audit_table
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
+    values(SQ_AUDIT.nextval, Sysdate,1,action_, 'category', string_action_pre,string_action_next,user);
+end;
+/
+
 /*
 drop table audit_table;
 drop table bill;
