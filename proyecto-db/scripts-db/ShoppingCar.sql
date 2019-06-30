@@ -1379,44 +1379,33 @@ create or replace function authenticationUser
 return user_table_type
 pipelined
 as
-    cursor cur_user is
-select us.user_id, us.name, pro.profile_id, pro.profile_name
-from user_table us , profile pro
-where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id;
-count_users
-number:
-=-1;
+    cursor cur_user is select us.user_id, us.name, pro.profile_id, pro.profile_name from user_table us , profile pro 
+    where us.email=email_input and us.password=md5Hash(pass) and pro.profile_id=us.profile_id; 
+    count_users number:=-1;
     many_users exception;
     no_user exception;
 begin
     for data_use in cur_user loop
-    count_users:
-    =count_users+1;
-    if count_users>1 then
-                raise many_users;
-end
-if;
-            pipe row
-(user_type
-( data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
-end loop;
-if count_users=-1 then
-            raise no_user;
-        else
-            return;
-end
-if;
+        count_users:=count_users+1;
+        if count_users>1 then
+            raise many_users;
+        end if;
+        pipe row(user_type(data_use.user_id,data_use.name,data_use.profile_id,data_use.profile_name));
+    end loop;
+    if count_users=-1 then
+        raise no_user;
+    else
+        return;
+    end if;
         exception 
             when no_user then
-                Raise_application_error
-(-20010,'Usuario Incorrecto o contraseña incorrecta');
+                Raise_application_error(-20010,'Usuario Incorrecto o contraseña incorrecta');
             when many_users then 
-                Raise_application_error
-(-20010,'base de datos fallando');
+                Raise_application_error(-20010,'base de datos fallando');
 
 end;
 /
-
+commit;
 select *
 from detail;
 alter table audit_table modify previous_data varchar2
