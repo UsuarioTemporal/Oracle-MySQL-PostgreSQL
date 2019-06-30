@@ -128,23 +128,18 @@ create table detail
 set SERVEROUTPUT on
 create or replace procedure creative_of_sequences
 as
-    type type_sq_array is varray
-(11) of varchar2
-(11);
+    type type_sq_array is varray(11) of varchar2(11);
     sq_array type_sq_array;
     length_ integer;
 begin
-    sq_array:
-    =type_sq_array
-    ('product','detail','user','category','bill','retouching','MEASURE','color','canto','audit','profile');
-length_:
-=sq_array.count;
+    sq_array:=type_sq_array('product','detail','user','category','bill','retouching','MEASURE','color','canto','audit','profile');
+    length_:=sq_array.count;
     for sq_name in 1..length_ loop
-execute immediate 'CREATE SEQUENCE sq_'
-||to_char
-(sq_array
-(sq_name))||' start with 1 increment by 1 NOCYCLE';
-end loop;
+        execute immediate 'CREATE SEQUENCE sq_'
+            ||to_char
+            (sq_array
+            (sq_name))||' start with 1 increment by 1 NOCYCLE';
+    end loop;
 end;
 /
 
@@ -198,15 +193,13 @@ values
 select *
 from profile;
 
---funcion para encriptar la contraseï¿½a 
+--funcion para encriptar la contraseña 
 create or replace function md5Hash
 (input_string in varchar2)
 return varchar2
 is
 begin
-    return DBMS_OBFUSCATION_TOOLKIT.md5 (input
-    => UTL_RAW.cast_to_raw
-    (input_string));
+    return DBMS_OBFUSCATION_TOOLKIT.md5 (input=> UTL_RAW.cast_to_raw(input_string));
 end;
 /
 SELECT md5Hash('thom') md5_val
@@ -1502,6 +1495,22 @@ end;
 /
 commit;
 
+create or replace procedure deleteUser(user_i in number)
+as begin
+    delete from user_table where user_id = user_i;
+end;
+/
+
+create or replace procedure updateUser(user_i in number,name_user varchar2,
+patternal varchar2,matternal varchar2,dni_ varchar2,phone varchar2,email_ varchar2,password_atribute varchar2,profile_atri number)
+as
+begin
+    update user_table
+    set name= name_user,paternal_surname=patternal,maternal_surname=matternal,dni=dni_,phone_number=phone,email=email_,password=md5Hash(password_atribute),profile_id=profile_atri
+    where user_id = user_i;
+end;
+/
+
 
 create or replace procedure insert_color (internal_c in varchar2,external_c in varchar2)
 as
@@ -1568,7 +1577,46 @@ end;
 /
 commit;
 
+create or replace procedure insert_type_of_measure(name_ in varchar2)
+as
+begin
+    insert into type_of_measure values(SQ_MEASURE.nextval, name_);
+end;
+/
+create or replace procedure delete_type_of_measure(id_ in number)
+as
+begin
+    delete from type_of_measure where measure_id = id_;
+end;
+/
+create or replace procedure update_type_of_measure(id_ in number,name_ in varchar2)
+as
+begin
+    update type_of_measure set name = name_ where measure_id=id_;
+end;
+/
 
+create or replace procedure insert_canto(name_ in varchar2)
+as
+begin
+    insert into canto values(SQ_CANTO.nextval, name_);
+end;
+/
+
+create or replace procedure update_canto(id_ in number,name_ in varchar2)
+as
+begin
+    update canto set name = name_ where canto_id = id_;
+end;
+/
+
+create or replace procedure delete_canto(id_ in number)
+as
+begin
+    delete from canto where canto_id = id_;
+end;
+/
+commit;
 create or replace trigger trg_color_BIUD before
 insert or update or delete on 
 color
