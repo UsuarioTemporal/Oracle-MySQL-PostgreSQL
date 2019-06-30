@@ -1702,6 +1702,12 @@ begin
 end;
 /
 
+--primero generar una factura
+exec invoice_generator(2);
+commit;
+--ahora ingresamos a esa factura
+exec to_buy(18,3,2,1);
+
 /*
 drop table audit_table;
 drop table bill;
