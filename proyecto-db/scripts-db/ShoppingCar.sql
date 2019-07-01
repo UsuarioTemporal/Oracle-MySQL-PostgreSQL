@@ -1733,6 +1733,9 @@ commit;
 --ahora ingresamos a esa factura
 exec to_buy(332,20,14,2);
 
+-- ver el total a pagar
+select sum(quantity*price) as total from detail where bill_id=2;
+
 /*
 drop table audit_table;
 drop table bill;
