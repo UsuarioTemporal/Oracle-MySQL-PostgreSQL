@@ -1728,7 +1728,7 @@ end;
 /
 
 --primero generar una factura
-exec invoice_generator(10);
+exec invoice_generator(4);
 commit;
 --ahora ingresamos a esa factura
 exec to_buy(332,20,14,2);
