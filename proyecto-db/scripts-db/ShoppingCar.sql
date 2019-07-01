@@ -1661,7 +1661,7 @@ begin
 		action_ :='delete';
 		string_action_pre:='old profile : '||:old.profile_id||', name : '||:old.profile_name;
 	end if;
-	string_action_next:='new profile : '||:new.profile_id||', name :'||:old.profile_name;
+	string_action_next:='new profile : '||:new.profile_id||', name :'||:new.profile_name;
     insert into audit_table
         (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
     values(SQ_AUDIT.nextval, Sysdate,1,action_, 'profile', string_action_pre,string_action_next,user);
@@ -1691,7 +1691,7 @@ begin
         action_:='update';
         string_action_pre:='old bill : '||:old.bill_id||', user_id : '||:old.user_id;
     end if;
-    string_action_next:='new bill : '||:old.bill_id||', user_id : '||:old.user_id;
+    string_action_next:='new bill : '||:new.bill_id||', user_id : '||:new.user_id;
     insert into audit_table
         (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
     values(SQ_AUDIT.nextval, Sysdate,id_us_,action_, 'bill', string_action_pre,string_action_next,name_);
@@ -1728,7 +1728,7 @@ end;
 /
 
 --primero generar una factura
-exec invoice_generator(14);
+exec invoice_generator(10);
 commit;
 --ahora ingresamos a esa factura
 exec to_buy(332,20,14,2);
