@@ -1698,7 +1698,7 @@ begin
 end;
 /
 
-
+commit;
 
 create or replace trigger trg_category_BIUD before
 insert or update or delete on 
