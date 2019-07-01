@@ -136,9 +136,7 @@ begin
     length_:=sq_array.count;
     for sq_name in 1..length_ loop
         execute immediate 'CREATE SEQUENCE sq_'
-            ||to_char
-            (sq_array
-            (sq_name))||' start with 1 increment by 1 NOCYCLE';
+            ||to_char(sq_array(sq_name))||' start with 1 increment by 1 NOCYCLE';
     end loop;
 end;
 /
@@ -202,7 +200,7 @@ begin
     return DBMS_OBFUSCATION_TOOLKIT.md5 (input=> UTL_RAW.cast_to_raw(input_string));
 end;
 /
-SELECT md5Hash('thom') md5_val
+SELECT md5Hash('pilar') md5_val
 FROM DUAL;
 
 insert into user_table
@@ -1291,8 +1289,7 @@ BEGIN
     SELECT *
     FROM product;
     return my_cursor;
-END
-fn_get_proudcts;
+END fn_get_proudcts;
 /
 select *
 from product;
@@ -1300,10 +1297,8 @@ create or replace type product_type
 as OBJECT
 (
     product_id number,
-    name varchar2
-(50),
-    price number
-(6,2),
+    name varchar2(50),
+    price number(6,2),
     retouching_id number,
     category_id number,
     measure_id number,
@@ -1322,13 +1317,8 @@ return product_table_type
 pipelined
 as
 begin
-    for v_rec in
-    (select *
-    from product)
-    loop
-        pipe row
-    (product_type
-    (v_rec.product_id ,
+    for v_rec in(select * from product) loop
+        pipe row(product_type(v_rec.product_id ,
                                 v_rec.name,
                                 v_rec.price,
                                 v_rec.retouching_id,
@@ -1405,13 +1395,16 @@ alter table audit_table modify previous_data varchar2
 (1000) default null;
 select *
 from table(authenticationUser('thomtwd@gmail.com','thom'));
+select * from table(authenticationUser('pilar@gmail.com','pilar'));
 select *
 from audit_table;
 alter table detail add user_id number not null;
 alter table detail add constraint fk_user_detail foreign key(user_id)
 references user_table(user_id) on delete cascade;
 --trigger para la auditoria de productos
---'product_id :'||product_id||', price :'||price||', quantity :'||quantity
+/**
+-- 'product_id :'||product_id||', price :'||price||', quantity :'||quantity
+**/
 create or replace trigger trg_detail_BI before
 insert on
 detail
@@ -1675,6 +1668,38 @@ begin
 end;
 /
 
+create or replace trigger trg_bill_BID before
+insert or update or delete on
+bill
+for each row
+declare 
+	action_ varchar2(100);
+	string_action_next varchar2(1000);
+	string_action_pre varchar2(1000):=' ';
+    name_ varchar2(100);
+    id_us_ number;
+begin
+    id_us_:=:new.user_id;
+    select name into name_ from user_table where user_id = id_us_;
+    if inserting then
+        action_:='insert';
+        
+    elsif deleting then
+        action_:='delete';
+        string_action_pre:='old bill : '||:old.bill_id||', user_id ='||:old.user_id;
+    elsif updating then
+        action_:='update';
+        string_action_pre:='old bill : '||:old.bill_id||', user_id : '||:old.user_id;
+    end if;
+    string_action_next:='new bill : '||:old.bill_id||', user_id : '||:old.user_id;
+    insert into audit_table
+        (audit_id,audit_date,user_id,action,name_table,previous_data,new_data,user_name)
+    values(SQ_AUDIT.nextval, Sysdate,id_us_,action_, 'bill', string_action_pre,string_action_next,name_);
+end;
+/
+
+
+
 create or replace trigger trg_category_BIUD before
 insert or update or delete on 
 category
@@ -1703,10 +1728,10 @@ end;
 /
 
 --primero generar una factura
-exec invoice_generator(2);
+exec invoice_generator(14);
 commit;
 --ahora ingresamos a esa factura
-exec to_buy(18,3,2,1);
+exec to_buy(332,20,14,2);
 
 /*
 drop table audit_table;
