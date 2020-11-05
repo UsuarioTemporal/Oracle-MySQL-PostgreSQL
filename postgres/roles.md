@@ -53,3 +53,6 @@ GRANT INSERT, SELECT, UPDATE ON TABLE public.viaje TO usuario_consulta;
 En ubuntu y sus derivados para ingresar a un usuario por consola, se debe ingresar:
 
 `psql --host=localhost --dbname=postgres --username=usuario_consulta`
+
+Es importante crear ROLES y dejar de usar el predeterminado de Postgres porque permite
+crear una estructura de permisos a medida

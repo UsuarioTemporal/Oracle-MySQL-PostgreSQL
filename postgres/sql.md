@@ -163,5 +163,4 @@ Funciones Especiales avanzadas en PosgreSQL
       ELSE'No'
     ENDAS"Adulto"
   FROM pasajero AS pa;
-
 ```
